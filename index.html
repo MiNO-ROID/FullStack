@@ -1,11 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+<!doctype html>
+<meta charset="utf-8">
+<title>Supabase test</title>
+<h2>1. Search products</h2>
+<input id="q" value="auckland wises"><button id="search">Search</button>
+
+<h2>2. Log in</h2>
+<input id="email" placeholder="email">
+<input id="pass" type="password" placeholder="password">
+<button id="login">Log in</button>
+
+<h2>3. Invite staff (sends a real email)</h2>
+<input id="invite" placeholder="email to invite"><button id="send">Invite</button>
+
+<h2>Result</h2>
+<pre id="out"></pre>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+    const db = supabase.createClient(
+        'https://ctfmdagftjbjmrxcvifw.supabase.co',
+        'sb_publishable_vlMtSjFVVXrntElJYlrUzA_wPpJ1_TO'
+    );
+    const $ = id => document.getElementById(id);
+    const show = x => $('out').textContent = JSON.stringify(x, null, 2);
+
+    $('search').onclick = async () => {
+        let query = db.from('products').select('id, title, price');
+        for (const word of $('q').value.trim().split(/\s+/)) {
+            query = query.ilike('raw_title', `%${word}%`);
+        }
+        const { data, error } = await query.limit(10);
+        show(error || data);
+    };
+
+    $('login').onclick = async () => {
+        const { data, error } = await db.auth.signInWithPassword({
+            email: $('email').value, password: $('pass').value
+        });
+        show(error ? error.message : { loggedInAs: data.user.email });
+    };
+
+    $('send').onclick = async () => {
+        const { data, error } = await db.functions.invoke('invite-staff', {
+            body: { email: $('invite').value }
+        });
+        show(error && error.context ? await error.context.json() : error || data);
+    };
+</script>
