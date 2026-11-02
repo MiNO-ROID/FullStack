@@ -2,10 +2,316 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Auckland Map Centre</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
-    <p>hello world!</p>
+<div id="site">
+  <header class="bar frame-x">
+    <div class="bar-in">
+      <a class="wordmark" href="#home">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><use href="assets/icons/logo.svg#icon"/></svg>
+        Auckland Map Centre
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#shop" data-view="shop">Shop</a>
+        <a href="#framing" data-view="framing">Framing</a>
+        <a href="#visit" data-view="visit">Visit</a>
+        <a href="#staff" data-view="staff">Staff</a>
+      </nav>
+      <button class="btn dark" type="button" id="openList">Enquiry list <span class="count num" id="listCount">0</span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section data-viewpane="home" aria-labelledby="h-home">
+      <div class="hero-head frame-x">
+        <h1 id="h-home">Auckland Map Centre</h1>
+        <div class="facts">
+          <p><strong id="factCount">6,867 maps, guides and globes</strong>Searchable, with today's prices</p>
+          <p><strong>Shop 3, 209 Queen Street</strong>Auckland CBD, since October 1999</p>
+          <p><strong id="factOpen">Open seven days</strong><span id="factOpenSub">Mon–Fri 9–5:30, Sat 10–4, Sun 10–2</span></p>
+          <p><strong>Mail order</strong>Posted anywhere in New Zealand</p>
+        </div>
+      </div>
+
+      <div class="cell cell-phone" id="cellPhone"></div>
+      <div class="sheet-wrap">
+        <div class="sheet" id="sheet"></div>
+      </div>
+
+      <section class="sec frame-x" aria-labelledby="h-depts">
+        <div class="depts">
+          <div class="dept-list">
+            <h2 id="h-depts" data-reveal>Twelve departments</h2>
+            <div id="deptRows"></div>
+          </div>
+          <div class="preview" aria-live="polite">
+            <div class="preview-run" id="deptPreview"></div>
+            <p id="deptBlurb" class="soft"></p>
+            <div><button class="btn" type="button" id="deptGo">Browse New Zealand</button></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec frame-x" aria-labelledby="h-picks">
+        <div class="picks">
+          <div class="picks-side">
+            <div>
+              <h2 id="h-picks" data-reveal>Staff picks</h2>
+              <p data-reveal style="--d:80ms;margin-top:10px"><button class="link" type="button" data-go="shop">See the whole shop</button></p>
+            </div>
+            <div class="notes" id="pickNotes"></div>
+          </div>
+          <div class="run" id="pickRun"></div>
+        </div>
+      </section>
+
+      <section class="frame-x" aria-labelledby="h-svc">
+        <div class="svc">
+          <h2 id="h-svc" data-reveal>Framing and mounting</h2>
+          <div class="svc-cta" data-reveal style="--d:80ms"><a class="btn" href="#framing">Ask for a quote</a></div>
+          <div class="svc-col c1" data-reveal style="--d:120ms"><strong>Framing</strong>
+            <button type="button" data-desc="Hundreds of frame mouldings and matt colours, cut to the size of your map or print.">Hundreds of frames</button>
+            <button type="button" data-desc="Choose a matt to sit between the map and the frame, in any colour we stock.">Matts in many colours</button>
+            <button type="button" data-desc="Finished with glass, or with a protective laminate that won't shatter.">Glass or laminate</button>
+            <button type="button" data-desc="Bring in a map bought anywhere. We frame prints, posters and charts too.">Any map or print</button>
+            <p class="svc-sum">Frames and matts for any map or print, finished with glass or laminate.</p>
+          </div>
+          <div class="svc-col c2" data-reveal style="--d:200ms"><strong>Mounting</strong>
+            <button type="button" data-desc="Foam mounting in two thicknesses, with coloured edging. Ideal for pin maps.">Foam mount, two thicknesses</button>
+            <button type="button" data-desc="Coloured edging finishes a foam-mounted map without a frame.">Coloured edging</button>
+            <button type="button" data-desc="We can sculpt foam mounts into shapes, such as the outline of an island.">Cut to shape</button>
+            <button type="button" data-desc="Mounted on wood under a laminate you can mark with a whiteboard pen to track your trips.">Block mount on wood</button>
+            <p class="svc-sum">Foam or wood, edged or cut to shape, ready to pin or write on.</p>
+          </div>
+          <div class="svc-col c3" data-reveal style="--d:280ms"><strong>Joining</strong>
+            <button type="button" data-desc="Adjoining topo sheets or charts joined edge to edge into one map.">Several sheets as one</button>
+            <button type="button" data-desc="The joined map is laminated so it can hang, roll or sit on a desk.">Laminated together</button>
+            <button type="button" data-desc="Large joined maps for offices, classrooms and boat sheds.">Wall and office maps</button>
+            <button type="button" data-desc="Every job is quoted before any work starts.">Quoted before we start</button>
+            <p class="svc-sum">Adjoining sheets joined and laminated into one wall map.</p>
+          </div>
+          <p class="svc-desc" id="svcDesc" aria-live="polite">Every job is priced to the piece. Point at a service to read more.</p>
+        </div>
+      </section>
+
+      <section class="frame-x" aria-labelledby="h-contact">
+        <div class="contact">
+          <p class="say" data-reveal>Can't see the map you need? Tell us the place and the scale, and we'll find it.</p>
+          <div class="ph" data-reveal style="--d:80ms" role="img" aria-label="Placeholder for a photo of the shop front">
+            <div><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons/camera.svg#icon"/></svg>Shop front photo</div>
+          </div>
+          <div class="reach" data-reveal style="--d:160ms">
+            <h2 id="h-contact">Visiting or ordering by post?</h2>
+            <p><a href="#visit">Send us an enquiry</a></p>
+            <p><a href="#visit">Phone (09) 309 7725</a></p>
+            <p>Shop 3, 209 Queen Street, Auckland. Open seven days.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- SHOP -->
+    <section data-viewpane="shop" hidden aria-labelledby="h-shop">
+      <div class="view-head frame-x">
+        <h1 id="h-shop">The shop</h1>
+        <div class="tools">
+          <label class="search" for="q">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons/search.svg#icon"/></svg>
+            <input id="q" type="search" placeholder="A place, a publisher, a sheet number or a scale" aria-label="Search the shop">
+          </label>
+          <select class="select" id="sort" aria-label="Sort">
+            <option value="rel">Department order</option>
+            <option value="az">Title A to Z</option>
+            <option value="lo">Price, low to high</option>
+            <option value="hi">Price, high to low</option>
+          </select>
+        </div>
+        <div class="chips" id="chips" role="group" aria-label="Departments"></div>
+        <p class="result-line num" id="resultLine">Loading the shop…</p>
+      </div>
+      <div class="grid-sheet frame-x" id="results"></div>
+      <div class="more frame-x" id="moreRow" hidden><button class="btn quiet" type="button" id="moreBtn">Show more</button><span class="small soft num" id="moreNote"></span></div>
+    </section>
+
+    <!-- FRAMING -->
+    <section data-viewpane="framing" hidden aria-labelledby="h-framing">
+      <div class="view-head frame-x">
+        <h1 id="h-framing">Framing and mounting</h1>
+        <p>Bring in any map or print. Every job is priced to the piece, so tell us about it and we'll reply with a quote.</p>
+      </div>
+      <div class="two frame-x">
+        <div class="svc-list">
+          <div><h2>Framing</h2><p>Hundreds of frames and matts to suit your map or print, finished with glass or a protective laminate.</p></div>
+          <div><h2>Foam mounting</h2><p>Two thicknesses, coloured edging and cut-to-shape options. Ideal for marking places with pins.</p></div>
+          <div><h2>Block mounting</h2><p>Mounted on wood under a laminate you can mark with a whiteboard pen to track your trips.</p></div>
+          <div><h2>Joining and laminating</h2><p>Adjoining sheets joined and laminated into one map for your wall or office.</p></div>
+        </div>
+        <form class="form" id="quoteForm" novalidate>
+          <h2>Request a quote</h2>
+          <div class="fields">
+            <div class="field"><label for="qs-service">Service</label><select id="qs-service"><option>Framing</option><option>Foam mounting</option><option>Block mounting</option><option>Joining and laminating</option></select></div>
+            <div class="field"><label for="qs-size">Size</label><select id="qs-size"><option>A3, 297 × 420 mm</option><option>A2, 420 × 594 mm</option><option selected>A1, 594 × 841 mm</option><option>A0, 841 × 1189 mm</option><option>Custom size</option></select></div>
+            <div class="field full"><label for="qs-item">What are we mounting?</label><input id="qs-item" placeholder="For example, two adjoining Topo50 sheets of the Tararua Range"></div>
+            <div class="field"><label for="qs-name">Name</label><input id="qs-name" required autocomplete="name"></div>
+            <div class="field"><label for="qs-email">Email</label><input id="qs-email" type="email" required autocomplete="email"></div>
+            <div class="field full"><label for="qs-notes">Anything else</label><textarea id="qs-notes" placeholder="Frame colour, deadline, where it will hang"></textarea></div>
+          </div>
+          <div class="form-foot"><button class="btn" type="submit">Send quote request</button></div>
+          <p class="ok" id="quoteOk" hidden></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- VISIT -->
+    <section data-viewpane="visit" hidden aria-labelledby="h-visit">
+      <div class="view-head frame-x">
+        <h1 id="h-visit">Visit the shop</h1>
+      </div>
+      <div class="visit frame-x">
+        <div>
+          <span class="status" id="openStatus">Checking today's hours</span>
+          <p class="addr">National Bank Centre<br>Shop 3, 209 Queen Street<br>Auckland CBD</p>
+          <table class="hours" aria-label="Opening hours"><tbody id="hours"></tbody></table>
+          <dl class="reach-rows">
+            <div><dt>Phone</dt><dd id="c-phone">(09) 309 7725</dd><button class="copy" type="button" data-copy="c-phone">Copy</button></div>
+            <div><dt>Email</dt><dd id="c-email">sales.amc@clear.net.nz</dd><button class="copy" type="button" data-copy="c-email">Copy</button></div>
+          </dl>
+          <p style="margin-top:20px"><a class="link" href="https://www.google.com/maps/search/?api=1&query=209+Queen+Street+Auckland" target="_blank" rel="noopener">Open in Google Maps</a></p>
+        </div>
+        <div class="visit-side">
+          <div class="ph" role="img" aria-label="Placeholder for a photo of the shop interior">
+            <div><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons/camera.svg#icon"/></svg>Shop interior photo</div>
+          </div>
+          <form class="form" id="contactForm" novalidate>
+            <h2>Ask us to find something</h2>
+            <div class="fields">
+              <div class="field"><label for="cf-name">Name</label><input id="cf-name" required autocomplete="name"></div>
+              <div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" required autocomplete="email"></div>
+              <div class="field full"><label for="cf-msg">What are you looking for?</label><textarea id="cf-msg" placeholder="The place, the scale or the edition"></textarea></div>
+            </div>
+            <div class="form-foot"><button class="btn" type="submit">Send enquiry</button></div>
+            <p class="ok" id="contactOk" hidden></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot frame-x">
+    <span>Maps, guides and globes on Queen Street</span>
+    <nav aria-label="Footer"><a href="#shop">Shop</a><a href="#framing">Framing</a><a href="#visit">Visit</a><a href="#staff">Staff sign in</a></nav>
+    <span>Student project, not the real Auckland Map Centre</span>
+  </footer>
+</div>
+
+<!-- STAFF (app screen) -->
+<div id="staffApp" hidden>
+  <div class="signin" id="signinPane">
+    <form class="panel" id="signinForm" novalidate>
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/icons/compass.svg#icon"/></svg>
+      <div><h1>Staff sign in</h1><p class="help" style="margin-top:6px">Auckland Map Centre catalogue and prices</p></div>
+      <div class="afield"><label for="si-email">Work email</label><input id="si-email" type="email" required autocomplete="username"></div>
+      <div class="afield"><label for="si-pass">Password</label><input id="si-pass" type="password" required autocomplete="current-password"></div>
+      <p class="help" id="siNote" role="alert"></p>
+      <button class="abtn primary" type="submit">Sign in</button>
+      <p class="help">Accounts are invite-only. Ask the shop owner for an invite.</p>
+      <a class="back" href="#home">Back to the shop</a>
+    </form>
+  </div>
+
+  <div class="app" id="dashPane" hidden>
+    <nav class="rail" aria-label="Staff">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/icons/compass.svg#icon"/></svg>
+      <a href="#staff" data-staff="prices" title="Prices" aria-label="Prices"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons/price-tag.svg#icon"/></svg><span class="label">Prices</span></a>
+      <a href="#staff-team" data-staff="team" title="Team" aria-label="Team"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons/team.svg#icon"/></svg><span class="label">Team</span></a>
+      <a href="#home" title="View the shop" aria-label="View the shop"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons/shop.svg#icon"/></svg><span class="label">Shop</span></a>
+      <button type="button" class="bottom" id="signOut" title="Sign out" aria-label="Sign out"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons/sign-out.svg#icon"/></svg><span class="label">Sign out</span></button>
+    </nav>
+
+    <div class="canvas">
+      <!-- Prices -->
+      <div id="pricesView">
+        <div class="title-row">
+          <div>
+            <h1>Prices</h1>
+            <p class="sub num" id="finding"></p>
+          </div>
+          <div class="acts"><button class="abtn" type="button" id="discard" disabled>Discard</button><button class="abtn primary" type="button" id="save" disabled>Save changes</button></div>
+        </div>
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" type="button" data-tab="all" aria-selected="true">All products<span class="n" id="nAll">0</span></button>
+          <button class="tab" role="tab" type="button" data-tab="changed" aria-selected="false">Changed<span class="n" id="nChanged">0</span></button>
+          <button class="tab" role="tab" type="button" data-tab="nophoto" aria-selected="false">No photo<span class="n" id="nNoPhoto">0</span></button>
+        </div>
+        <div class="ledger-grid">
+          <div style="min-width:0">
+            <div class="toolbar">
+              <label class="asearch" for="aq"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons/search.svg#icon"/></svg><input id="aq" type="search" placeholder="Title or shop code" aria-label="Find a product"></label>
+              <select id="acat" aria-label="Department"></select>
+              <span class="count-note" id="countNote"></span>
+            </div>
+            <table class="ledger">
+              <thead><tr><th style="width:56px">Photo</th><th>Product</th><th>Department</th><th class="num">Price</th><th class="num">Change</th><th style="width:64px"></th></tr></thead>
+              <tbody id="rows"></tbody>
+            </table>
+            <div class="pager"><span id="pageInfo"></span><div class="acts"><button class="abtn" type="button" id="prev">Previous</button><button class="abtn" type="button" id="next">Next</button></div></div>
+          </div>
+          <form class="panel" id="bulkForm" novalidate>
+            <div><h2>Change a department</h2><p class="help" style="margin-top:4px">Adds the new prices to your unsaved changes, so you can check them before saving.</p></div>
+            <div class="afield"><label for="b-cat">Department</label><select id="b-cat"></select></div>
+            <div class="arow">
+              <div class="afield"><label for="b-pct">Change by %</label><input id="b-pct" type="number" step="0.5" value="5" inputmode="decimal"></div>
+              <div class="afield"><label for="b-round">Round to</label><select id="b-round"><option value="95">$x.95</option><option value="99">$x.99</option><option value="10">Nearest 10c</option><option value="0">Exact cents</option></select></div>
+            </div>
+            <dl class="well" id="bulkWell"></dl>
+            <button class="abtn" type="submit">Add to unsaved changes</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Team -->
+      <div id="teamView" hidden>
+        <div class="title-row"><div><h1>Team</h1><p class="sub">Who can sign in to change prices and photos. Customers can't sign up, and only an owner can invite someone.</p></div></div>
+        <div class="team-grid">
+          <div class="panel">
+            <h2>People</h2>
+            <ul class="team-list" id="team"></ul>
+          </div>
+          <form class="panel" id="inviteForm" novalidate>
+            <h2>Invite someone</h2>
+            <div class="afield"><label for="inv-email">Email</label><input id="inv-email" type="email" required placeholder="name@aucklandmapcentre.co.nz"></div>
+                        <div class="mail" aria-label="Invite email preview">
+              <span class="from">From Auckland Map Centre</span>
+              <strong>You're invited to the shop's staff area</strong>
+              <span id="mailBody">Set a password to start changing prices and photos for the website.</span>
+            </div>
+            <button class="abtn primary" type="submit">Send invite</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="scrim" id="modalScrim" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" id="modal"></div></div>
+<div class="scrim drawer-scrim" id="drawerScrim" hidden>
+  <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+    <div class="drawer-head"><h2 id="dTitle">Enquiry list</h2><button class="x" type="button" id="closeDrawer" aria-label="Close enquiry list"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="assets/icons/close.svg#icon"/></svg></button></div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </aside>
+</div>
+<div class="toast off" id="toast" role="status" aria-live="polite"></div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
