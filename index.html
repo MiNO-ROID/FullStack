@@ -1,11 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p> I am yogenkarki</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Management</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+
+  <body>
+    <div class="dashboard">
+      <!-- LEFT SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-logo">
+          <span class="logo-icon">◐</span>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item" title="Products">
+            <span>♢</span>
+          </a>
+
+          <a href="#" class="nav-item active" title="Team">
+            <span>♧</span>
+          </a>
+
+          <a href="#" class="nav-item" title="Store">
+            <span>▣</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <a href="#" class="nav-item" title="Logout">
+            <span>⇥</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
+        <!-- PAGE HEADER -->
+        <header class="page-header">
+          <h1>Team</h1>
+
+          <p>
+            Who can sign in to change prices and photos. Customers can't sign
+            up.
+          </p>
+        </header>
+
+        <!-- TEAM CONTENT -->
+        <section class="team-layout">
+          <!-- LEFT: TEAM MEMBERS -->
+          <div class="team-members">
+            <div class="section-card">
+              <h2>People</h2>
+
+              <div class="divider"></div>
+
+              <!-- TEAM MEMBER -->
+              <div class="member">
+                <div class="member-avatar">M</div>
+
+                <div class="member-info">
+                  <p class="member-email">manager@aucklandmapcentre.co.nz</p>
+
+                  <span class="member-status"> Signed in now </span>
+                </div>
+
+                <span class="role-badge"> Owner </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: INVITATION FORM -->
+          <div class="invite-section">
+            <div class="section-card">
+              <h2>Invite someone</h2>
+
+              <form id="invite-form">
+                <!-- EMAIL -->
+                <div class="form-group">
+                  <label for="email"> Email </label>
+
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="name@aucklandmapcentre.co.nz"
+                    required
+                  />
+                </div>
+
+                <!-- ROLE -->
+                <div class="form-group">
+                  <label for="role"> Role </label>
+
+                  <select id="role" name="role">
+                    <option value="staff" selected>Staff</option>
+
+                    <option value="owner">Owner</option>
+                  </select>
+                </div>
+
+                <!-- INVITATION INFORMATION -->
+                <div class="invite-description">
+                  <h3>You're invited to the shop's staff area</h3>
+
+                  <p>
+                    Set a password to start changing prices and photos for the
+                    website.
+                  </p>
+                </div>
+              </form>
+            </div>
+
+            <!-- SEND INVITE BUTTON -->
+            <button type="submit" form="invite-form" class="invite-button">
+              Send invite
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+    ```
+  </body>
 </html>
