@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="t">
+  <title id="t">Illustration of the Auckland Map Centre shop front on Queen Street</title>
+  <!-- palette: navy #0e1d3a, navy-2 #1b2f57, steel #2c4a78, gold #c9a245, paper #e1e7ef, ground #f3f5f8 -->
+  <!-- sky and building -->
+  <rect width="800" height="600" fill="#e1e7ef"/>
+  <rect x="0" y="0" width="800" height="120" fill="#d2dae6"/>
+  <g fill="#c3cddd">
+    <rect x="40" y="20" width="70" height="100"/><rect x="130" y="20" width="70" height="100"/>
+    <rect x="600" y="20" width="70" height="100"/><rect x="690" y="20" width="70" height="100"/>
+  </g>
+  <rect x="0" y="120" width="800" height="400" fill="#f3f5f8"/>
+  <!-- stone pillars -->
+  <rect x="0" y="120" width="70" height="400" fill="#dfe4ec"/>
+  <rect x="730" y="120" width="70" height="400" fill="#dfe4ec"/>
+
+  <!-- fascia sign -->
+  <rect x="70" y="140" width="660" height="70" fill="#0e1d3a"/>
+  <g transform="translate(112 175)">
+    <circle r="20" fill="none" stroke="#c9a245" stroke-width="2.5"/>
+    <path d="M0 -17 L5 0 L0 17 L-5 0 Z" fill="#c9a245"/>
+    <path d="M-17 0 L0 -4 L17 0 L0 4 Z" fill="#c9a245" opacity=".45"/>
+  </g>
+  <text x="148" y="186" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="32" fill="#c9a245" letter-spacing="-0.5">Auckland Map Centre</text>
+  <text x="704" y="186" text-anchor="end" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="18" fill="#e8d39b">Maps · Guides · Globes</text>
+
+  <!-- awning -->
+  <path d="M70 210 H730 L750 250 H50 Z" fill="#1b2f57"/>
+  <g fill="#c9a245">
+    <path d="M50 250 H750 V258 H50 Z"/>
+  </g>
+
+  <!-- shop window frame -->
+  <rect x="90" y="270" width="440" height="230" fill="#0e1d3a"/>
+  <rect x="100" y="280" width="420" height="210" fill="#2c4a78"/>
+  <!-- window reflection bands -->
+  <path d="M100 280 L170 280 L100 360 Z" fill="#3a5c8f"/>
+  <path d="M430 280 L470 280 L380 490 L340 490 Z" fill="#33547f" opacity=".7"/>
+
+  <!-- hanging map in window -->
+  <line x1="160" y1="280" x2="160" y2="300" stroke="#c9a245" stroke-width="2"/>
+  <line x1="300" y1="280" x2="300" y2="300" stroke="#c9a245" stroke-width="2"/>
+  <rect x="140" y="300" width="180" height="110" fill="#e1e7ef"/>
+  <!-- a simple stylised coastline on the hanging map -->
+  <path d="M170 395 C185 370 175 350 200 340 C220 332 230 318 250 322 C265 325 270 312 285 308 L292 318 C280 330 290 345 272 352 C255 360 262 378 240 382 C222 386 215 398 196 404 Z" fill="#c9a245"/>
+  <g stroke="#9aa6bd" stroke-width="1">
+    <line x1="140" y1="335" x2="320" y2="335"/><line x1="140" y1="370" x2="320" y2="370"/>
+    <line x1="200" y1="300" x2="200" y2="410"/><line x1="260" y1="300" x2="260" y2="410"/>
+  </g>
+
+  <!-- display shelf -->
+  <rect x="100" y="450" width="420" height="14" fill="#c9a245"/>
+  <rect x="100" y="464" width="420" height="26" fill="#1b2f57"/>
+
+  <!-- desk globe -->
+  <g transform="translate(410 380)">
+    <circle r="52" fill="#1b2f57"/>
+    <circle r="52" fill="none" stroke="#c9a245" stroke-width="3"/>
+    <ellipse rx="22" ry="52" fill="none" stroke="#c9a245" stroke-width="1.5" opacity=".8"/>
+    <path d="M-52 0 H52 M-46 -24 H46 M-46 24 H46" stroke="#c9a245" stroke-width="1.5" opacity=".8"/>
+    <path d="M-30 -20 C-18 -34 2 -30 6 -16 C10 -4 -6 2 -14 10 C-22 18 -34 8 -30 -20 Z" fill="#c9a245" opacity=".85"/>
+    <path d="M14 8 C26 2 38 10 34 24 C30 34 18 30 14 22 Z" fill="#c9a245" opacity=".85"/>
+    <path d="M-60 0 A60 60 0 0 1 60 0" fill="none" stroke="#e8d39b" stroke-width="4"/>
+    <rect x="-4" y="52" width="8" height="14" fill="#c9a245"/>
+    <rect x="-26" y="64" width="52" height="6" fill="#c9a245"/>
+  </g>
+
+  <!-- folded maps and guides on the shelf -->
+  <g>
+    <rect x="130" y="418" width="34" height="32" fill="#c9a245"/>
+    <rect x="130" y="418" width="6" height="32" fill="#0e1d3a"/>
+    <rect x="170" y="412" width="30" height="38" fill="#e1e7ef"/>
+    <rect x="170" y="412" width="5" height="38" fill="#c9a245"/>
+    <rect x="206" y="422" width="44" height="28" fill="#0e1d3a"/>
+    <path d="M211 428 L222 424 L233 428 L244 424 V444 L233 448 L222 444 L211 448 Z" fill="none" stroke="#c9a245" stroke-width="1.5"/>
+    <rect x="256" y="420" width="40" height="30" fill="#2c4a78"/>
+    <circle cx="276" cy="435" r="9" fill="none" stroke="#c9a245" stroke-width="1.5"/>
+    <circle cx="276" cy="435" r="4" fill="none" stroke="#c9a245" stroke-width="1.5"/>
+  </g>
+
+  <!-- door -->
+  <rect x="560" y="270" width="150" height="250" fill="#0e1d3a"/>
+  <rect x="572" y="282" width="126" height="160" fill="#2c4a78"/>
+  <path d="M572 282 L620 282 L572 340 Z" fill="#3a5c8f"/>
+  <rect x="680" y="380" width="8" height="40" fill="#c9a245"/>
+  <!-- open sign -->
+  <line x1="610" y1="282" x2="610" y2="300" stroke="#c9a245" stroke-width="1.5"/>
+  <line x1="660" y1="282" x2="660" y2="300" stroke="#c9a245" stroke-width="1.5"/>
+  <rect x="598" y="300" width="74" height="28" fill="#c9a245"/>
+  <text x="635" y="320" text-anchor="middle" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="16" fill="#0e1d3a">Open</text>
+  <!-- door number and hours -->
+  <text x="635" y="470" text-anchor="middle" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="28" fill="#c9a245">209</text>
+  <text x="635" y="494" text-anchor="middle" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="12" fill="#e8d39b">Shop 3 · Open seven days</text>
+
+  <!-- pavement -->
+  <rect x="0" y="520" width="800" height="80" fill="#c3cddd"/>
+  <g fill="#b3bfd2">
+    <rect x="0" y="520" width="800" height="6"/>
+    <rect x="80" y="550" width="120" height="4"/><rect x="300" y="565" width="160" height="4"/><rect x="560" y="550" width="140" height="4"/>
+  </g>
+  <!-- sandwich board -->
+  <g transform="translate(470 520)">
+    <path d="M-28 0 L-18 -64 H18 L28 0 Z" fill="#0e1d3a"/>
+    <rect x="-14" y="-56" width="28" height="22" fill="#c9a245"/>
+    <text x="0" y="-18" text-anchor="middle" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="9" fill="#e8d39b">Topo50</text>
+    <text x="0" y="-7" text-anchor="middle" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="9" fill="#e8d39b">in stock</text>
+  </g>
+</svg>
