@@ -33,7 +33,7 @@ body{
     font-size: var(--step-small);
     color: var(--l-ground);
     margin: 0 0rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .email{
@@ -42,7 +42,7 @@ body{
     border-radius: 5px;
     min-width: 300px;
     padding: 0.5em;
-    margin-bottom: 0.8em;
+    margin-bottom: 1em;
     margin-top: 0.5em;
 }
 
@@ -65,7 +65,7 @@ input:focus{
 .hint{
     font-size: var(--step-small);
     color: var(--scrim);
-    margin: 0 0rem;
+    margin: 0.5em 0em;
     color: var(--l-ground);
 }
 
@@ -76,7 +76,7 @@ input:focus{
     box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
     background-color: var(--soft);
     padding: 0.5em;
-    margin-bottom: 0.8em;
+    margin-bottom: 1em;
     margin-top: 0.5em;
     color: var(--l-surface);
 }

@@ -1,29 +1,30 @@
-// global variables -- includes url and publishable key--to connect with supabase
-const db = supabase.createClient(
-    'https://ctfmdagftjbjmrxcvifw.supabase.co',
-    'sb_publishable_vlMtSjFVVXrntElJYlrUzA_wPpJ1_TO'
-);
+import { supabase } from "./supabaseClient";    
 
 //global variables
 const form = document.getElementById('form');
 const email = document.getElementById('email').value.trim();
 const password = document.getElementById('password').value;
 const submit = document.getElementById('submit');
+const message = document.querySelector('.hint');
+
+// const staffDashboardUrl = './staffDashboard.html';
+// const ownerDashboardUrl = './ownerDashboard.html';
 
 // checkSession -- function
 async function checkSession(){
-    const {error, data} = await db.auth.getSession();
+    const {error, data: {session}} = await supabase.auth.getSession();
 
     if(error){
         console.error("Failed to retrieve authentication session: ", error);
         return;
     }
 
-    const session = data.session;
+    // const session = data.session;
 
     if(session){
-        console.log("User logged in.");
         console.log("Email: ", session.user.email)
+        // window.location.href = "./dashboard.html";
+        // window.location.replace(staffDashboard.html);
     }else{
         console.log("User not logged in.");
     }
@@ -34,14 +35,18 @@ async function checkSession(){
 //initialized the checkSession function
 checkSession();
 
-async function handleSignIn(){
+//handle signin form submission
+form.addEventListener('submit', async (event) => {
+    
+    event.preventDefault();
+    
     try{
         //submit button disabled during processing
         submit.disabled = true;
 
-        const{error, data} = await db.auth.signInWithPassword({
+        const{error, data} = await supabase.auth.signInWithPassword({
             email: email,
-            password: password,
+            password: password
         });
 
         if(error){
@@ -49,9 +54,12 @@ async function handleSignIn(){
             return;
         }
 
+        const user = data.user;
+
+
     }catch{
 
     }finally{
 
     }
-} 
+});
