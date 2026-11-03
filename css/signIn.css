@@ -14,7 +14,7 @@ body{
 
 /* form */
 .form{
-    background-color: var(--soft);
+    background-color: var(--l-primary);
     border: 1px solid var(--soft);
     border-radius: 5px;
     width: 100%;
@@ -26,11 +26,12 @@ body{
     font-size: var(--step-lead);
     margin: 0 0rem;
     margin-bottom: 0.5rem;
+    color: var(--l-surface);
 }
 
 .sub-heading{
     font-size: var(--step-small);
-    color: var(--scrim);
+    color: var(--l-ground);
     margin: 0 0rem;
     margin-bottom: 0.5rem;
 }
@@ -65,16 +66,19 @@ input:focus{
     font-size: var(--step-small);
     color: var(--scrim);
     margin: 0 0rem;
+    color: var(--l-ground);
 }
 
 .submit{
     border: 1px solid var(--l-muted);
     border-radius: 5px;
-    min-width: 300px;
+    min-width: 315px;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+    background-color: var(--soft);
     padding: 0.5em;
     margin-bottom: 0.8em;
     margin-top: 0.5em;
-    font-weight: 550;
+    color: var(--l-surface);
 }
 
 .link-heading{
@@ -82,4 +86,9 @@ input:focus{
     color: var(--scrim);
     margin-top: 0.5em;
     margin-bottom: 0.5em;
+    color: var(--l-ground);
+}
+
+.header{
+    color: var(--l-ground);
 }

@@ -6,6 +6,8 @@
     <title>Sign In</title>
     <link rel="stylesheet" href="./css/root.css">
     <link rel="stylesheet" href="./css/signIn.css">
+    <!-- Supabase JavaScript Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <div class="container">
@@ -13,17 +15,18 @@
     <form class="form" id="form">
         <p class="heading"> Staff sign in </p>
         <p class="sub-heading"> Auckland Map Centre catalogue and prices </p>
-        <label for="email">Email</label> <br>
+        <label for="email" class="header">Email</label> <br>
         <input type="email" id="email" class="email" placeholder="manager@aucklandmapcenter.co.nz" required> <br>
-        <label for="password">Password</label> <br>
+        <label for="password" class="header">Password</label> <br>
         <input type="password" id="password" class="password" minlength="8" required>
         <p class="hint"> Use a strong password for security </p>
         <button type="submit" class="submit" id="submit"> Sign in </button>
         
         <p class="sub-heading"> Accounts are invited-only. Ask the shop owner for an invite. </p>
         <span> <a href="#" class="link-heading"> Back to the shop </a> </span>
-
     </form>
     </div>
+
+    <script src="./js/signIn.js"> </script>
 </body>
 </html>
