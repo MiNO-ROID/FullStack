@@ -77,7 +77,7 @@ input:focus{
     background-color: var(--soft);
     padding: 0.5em;
     margin-bottom: 1em;
-    margin-top: 0.5em;
+    margin-top: 0.8em;
     color: var(--l-surface);
 }
 
@@ -90,5 +90,13 @@ input:focus{
 }
 
 .header{
+    color: var(--l-ground);
+}
+
+/*  login message */
+#login-message{
+    font-size: var(--step-small);
+    color: var(--scrim);
+    margin: 0.5em 0em;
     color: var(--l-ground);
 }
