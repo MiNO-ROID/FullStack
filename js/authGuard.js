@@ -29,7 +29,7 @@ export async function checkUserRole(requiredRole){
     // .select('id', 'role')
     .select('role')
     .eq('id', user.id)
-    .single();
+    .maybeSingle();
 
     if(error || !member){
         await supabase.auth.signOut();

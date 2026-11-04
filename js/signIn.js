@@ -1,20 +1,26 @@
 //import supabase client
-import { supabase } from "./supabaseClient";    
+import { supabase } from "./supabaseClient.js";    
+
+ 
+
+// console.log("++++ ", supabase);
 
 //global variables
 const form = document.getElementById('form');
-const email = document.getElementById('email').value.trim().toLowerCase();
-const password = document.getElementById('password').value;
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
 const submit = document.getElementById('submit');
 
 //create element for login feedback
 const message = document.createElement('p');
 message.id = "login-message";
 message.setAttribute("role","alert");
-form.insertBefore('message', 'submit');
+
+// form.appendChild()
+form.insertBefore(message, submit);
 
 //function to display login messages
-function displayMessage(){
+function displayMessage(text, type){
     message.textContent = text;
     message.className = type;
     message.style.display = text ? "block" : "none" ;
@@ -54,6 +60,11 @@ form.addEventListener('submit', async (event) => {
     
     event.preventDefault();
 
+    //retrieve email and password inputs
+    const email = emailInput.value.trim().toLowerCase();
+    const password = passwordInput.value;
+
+
     if(!email || !password){
         displayMessage("Please, enter both email and password. Thanks", "error");
         console.error('Please, enter valid email and password', error);
@@ -82,7 +93,7 @@ form.addEventListener('submit', async (event) => {
         .from("staff")
         .select("id, role")  // is_active
         .eq("id", user.id)
-        .single();
+        .maybeSingle();
 
         // to check database error
         if(storeError){
@@ -132,6 +143,6 @@ form.addEventListener('submit', async (event) => {
 
 // authentication event listners
 supabase.auth.onAuthStateChange((event, session) => {
-    // console.log("Authenticaton event", event);
+    console.log("Authenticaton event", event);
     console.log("Current session", session);
 });
