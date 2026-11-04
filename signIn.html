@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <link rel="stylesheet" href="./css/root.css" />
+    <link rel="stylesheet" href="./css/signIn.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- <img src=""> -->
+      <form class="form" id="form">
+        <p class="heading">Staff sign in</p>
+        <p class="sub-heading">Auckland Map Centre catalogue and prices</p>
+        <label for="email" class="header">Email</label> <br />
+        <input
+          type="email"
+          id="email"
+          class="email"
+          placeholder="manager@aucklandmapcenter.co.nz"
+          autocomplete="email"
+          required
+        />
+        <br />
+        <label for="password" class="header">Password</label> <br />
+        <input
+          type="password"
+          id="password"
+          class="password"
+          minlength="8"
+          required
+        />
+        <p class="sub-heading">Use a strong password for security</p>
+        <button type="submit" class="submit" id="submit">Sign in</button>
+
+        <p class="hint">
+          Accounts are invited-only. Ask the shop owner for an invite.
+        </p>
+        <span> <a href="#" class="link-heading"> Back to the shop </a> </span>
+      </form>
+    </div>
+    <!-- Load as an ES Module to import Supabase cleanly -->
+    <script type="module" src="./js/signIn.js"></script>
+ 
+  </body>
+</html>
