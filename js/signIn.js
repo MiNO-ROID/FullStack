@@ -29,31 +29,6 @@ function displayMessage(text, type){
 // const staffDashboard = './staffDashboard.html';
 // const ownerDashboard = './ownerDashboard.html';
 
-// checkSession -- function
-async function checkSession(){
-
-    const {error, data: {session}} = await supabase.auth.getSession();   //retrieve current session
-
-    if(error){
-        console.error("Failed to retrieve authentication session: ", error);
-        return;
-    }
-
-    // const session = data.session;
-
-    if(session){
-        console.log("Email: ", session.user.email)
-        // window.location.href = "./dashboard.html";
-        // window.location.replace(staffDashboard.html);
-    }else{
-        console.log("User not logged in.");
-    }
-    
-    console.log("Session checked !");
-}
-
-//initialized the checkSession function
-checkSession();
 
 //handle signin form submission
 form.addEventListener('submit', async (event) => {

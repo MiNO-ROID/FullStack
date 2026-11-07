@@ -8,3 +8,14 @@ const passwordInput = document.getElementById("password");
 const role = document.getElementById("role");
 const button = document.getElementById("submit");
 const message = document.getElementById("invite-message");
+
+//display message
+function displayMessage(message, type){
+    message.textContent = message;
+    message.className = `invite-message ${type}`;
+}
+
+//display team members -- function
+async function loadTeamMembers() {
+    
+}
