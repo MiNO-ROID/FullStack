@@ -1,7 +1,10 @@
 //display message
 export function displayMessage(message, type){
-    message.textContent = message;
-    message.className = `invite-message ${type}`;
+    const messageElement = document.getElementById("invite-message");
+    if(!messageElement) return;
+    messageElement.textContent = message;
+    messageElement.className = `invite-message ${type}`;
+    messageElement.style.display = "block";
 }
 
 //display team members -- function
@@ -64,4 +67,15 @@ export  function displayTeamMembers(members, currentUserId) {
 
 }
 
-export function 
+//inivitation button -- loading state
+export function setInviteLoading(isLoading){
+    const inviteButton = document.querySelector("invite-button");
+    inviteButton.disabled = isLoading;
+    inviteButton.textContent = isLoading ? "Sending inivation" : "Send invite";
+}
+
+//clear invite form
+export function clearInviteForm(){
+    const inviteForm = document.getElementById("invite-form");
+    inviteForm.reset();
+}

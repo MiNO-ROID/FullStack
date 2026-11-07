@@ -12,8 +12,8 @@ export async function getTeamMembers(){
     });
 
     if(error){
+        console.log("Failed to retrive data from staff table: ", error);
         throw error;
-        // console.log("Failed to retrive data from staff table: ", error);
     }
 
     return data;
@@ -29,8 +29,8 @@ export async function getMemberRole(userID){
     .single();
 
     if(error){
+        console.log("Failed to retrive role: ", error);
         throw error;
-        // console.log("Failed to retrive role: ", error);
     }
 
     return data.role;
