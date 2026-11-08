@@ -1,6 +1,18 @@
 body{
-    background-color: var(--ink);
+    background-color: var(--l-ground);
     font-family: var(--font);
+}
+
+svg {
+  min-width: 50px;
+  color: white;
+  padding: 0.5em;
+}
+
+.logo {
+  display: inline-block;
+  border-bottom: 1px solid var(--l-border);
+  margin-bottom: 15px;
 }
 
 /* whole-box */
@@ -14,8 +26,8 @@ body{
 
 /* form */
 .form{
-    background-color: var(--l-primary);
-    border: 1px solid var(--soft);
+    background-color: var(--l-surface);
+    border: 1px solid var(--l-border);
     border-radius: 5px;
     width: 100%;
     max-width: 320px;
@@ -26,19 +38,20 @@ body{
     font-size: var(--step-lead);
     margin: 0 0rem;
     margin-bottom: 0.5rem;
-    color: var(--l-surface);
+    color: var(--l-text);
 }
 
 .sub-heading{
     font-size: var(--step-small);
-    color: var(--l-ground);
+    color: var(--l-text);
     margin: 0 0rem;
     margin-bottom: 1rem;
 }
 
 .email{
-    border: 1px solid var(--l-muted);
-    background-color: var(--soft);
+    border: 1px solid var(--l-border);
+    background-color: var(--l-surface);
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
     border-radius: 5px;
     min-width: 300px;
     padding: 0.5em;
@@ -47,11 +60,11 @@ body{
 }
 
 .password{
-    border: 1px solid var(--l-muted);
+    border: 1px solid var(--l-border);
     border-radius: 5px;
     min-width: 300px;
     box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
-    background-color: var(--soft);
+    background-color: var(--l-surface);
     padding: 0.5em;
     margin-bottom: 0.8em;
     margin-top: 0.5em;
@@ -64,33 +77,32 @@ input:focus{
 
 .hint{
     font-size: var(--step-small);
-    color: var(--scrim);
     margin: 0.5em 0em;
-    color: var(--l-ground);
+    color: var(--l-text);
 }
 
 .submit{
-    border: 1px solid var(--l-muted);
+    border: 1px solid var(--l-border);
     border-radius: 5px;
     min-width: 315px;
     box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
-    background-color: var(--soft);
+    background-color: var(--l-primary);
     padding: 0.5em;
     margin-bottom: 1em;
     margin-top: 0.8em;
     color: var(--l-surface);
+    font-weight: 550;
 }
 
 .link-heading{
     font-size: var(--step-small);
-    color: var(--scrim);
+    color: var(--l-text);
     margin-top: 0.5em;
     margin-bottom: 0.5em;
-    color: var(--l-ground);
 }
 
 .header{
-    color: var(--l-ground);
+    color: var(--l-text);
 }
 
 /*  login message */

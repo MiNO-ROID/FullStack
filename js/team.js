@@ -118,17 +118,4 @@ inviteForm.addEventListener("submit", async (event) => {
   }
 });
 
-// //sign-out
-// async function handleSignOut(){
-//     try{
-//         await signOut();
-//         window.location.replace("./signIn.html");
-//     }catch(error){
-//         console.error("Sign-out failed: ", error);
-//     }
-// }
-
-// //eventlistners
-// signOutBtn.addEventListener("click", handleSignOut);
-
 initializeTeamDashboard(); //initialize dashboard

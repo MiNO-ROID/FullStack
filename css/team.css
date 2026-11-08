@@ -35,6 +35,7 @@ svg {
 
 .sidebar-logo {
   height: 60px;
+  max-width: 60px;
 
   display: flex;
   justify-content: center;

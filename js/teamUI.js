@@ -80,7 +80,7 @@ export  function displayTeamMembers(members, currentUserId) {
 export function setInviteLoading(isLoading){
     const inviteButton = document.querySelector(".invite-button");
     inviteButton.disabled = isLoading;
-    inviteButton.textContent = isLoading ? "Sending inivation" : "Send invite";
+    inviteButton.textContent = isLoading ? "Sending invitation" : "Send invite";
 }
 
 //clear invite form
