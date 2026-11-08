@@ -13,7 +13,7 @@ import {
 const inviteForm = document.getElementById("invite-form");
 const emailInput = document.getElementById("email");
 const roleInput = document.getElementById("role");
-// const button = document.querySelector("invite-button");
+const button = document.querySelector(".invite-button");
 // const message = document.getElementById("invite-message");
 
 //team-dashboard
