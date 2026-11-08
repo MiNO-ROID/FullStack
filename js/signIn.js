@@ -30,7 +30,7 @@ function displayMessage(text, type){
 // const ownerDashboard = './ownerDashboard.html';
 
 // checkSession -- function
-export async function checkSession(){
+ async function checkSession(){
 
     const {error, data: {session}} = await supabase.auth.getSession();   //retrieve current session
 
@@ -110,7 +110,7 @@ form.addEventListener('submit', async (event) => {
         if(store.role === "owner"){
             displayMessage('Welcome back, Owner','success');
             console.log('owner logged in');
-            // window.location.replace.ownerDashboard();
+            window.location.replace("./team.html");
             return;
         }
 

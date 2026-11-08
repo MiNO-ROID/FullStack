@@ -1,5 +1,5 @@
 //import supabase client
-import{supabase} from ("./js/supabaseClient.js");
+import{supabase} from "./supabaseClient.js";
 
 //check authentication
 export async function checkUserAuthentication(){
@@ -22,6 +22,7 @@ export async function checkUserRole(requiredRole){
     const user = await checkUserAuthentication();
 
     if(!user){
+        console.log("No auathenticated user found.");
         return null;
     }
 
@@ -33,15 +34,19 @@ export async function checkUserRole(requiredRole){
 
     //check database error
     if(error || !member){
-        console.error('User not authenticated', error);
+        console.error('Failed to retrieve role', error);
         return null;
     }
 
-    //check member role
-    if(member.role !== requiredRole){
-        console.log("Role not matched");
-        return null;
+    const actualRole = member.role?.trim().toLowerCase();
+    const expectedRole = requiredRole.trim().toLowerCase();
+
+    if(actualRole != expectedRole){
+        console.error(`Role mismtached: expected ${expectedRole}, recieved ${actualRole}`);
+        return;
     }
+
+    console.log("Role successfully verified:", actualRole);
 
     return user;
      

@@ -10,7 +10,7 @@ import {
 } from "./teamUI.js";
 
 // DOM elements
-const inviteForm = document.querySelector("invite-form");
+const inviteForm = document.getElementById("invite-form");
 const emailInput = document.getElementById("email");
 const roleInput = document.getElementById("role");
 // const button = document.querySelector("invite-button");
@@ -20,7 +20,7 @@ const roleInput = document.getElementById("role");
 async function initializeTeamDashboard() {
   try {
     //check - user is owner
-    const user = await checkUserRole();
+    const user = await checkUserRole("owner");
 
     //if user isn't owner
     if (!user) {
@@ -55,7 +55,7 @@ async function loadTeamMembers(currentUserId) {
 }
 
 // validate email
-async function validateEmail() {
+function validateEmail() {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailPattern.test(email);
 }
@@ -71,8 +71,8 @@ inviteForm.addEventListener("submit", async (event) => {
 
   // check email validation
   if (!validateEmail(email)) {
-    displayMessage("Invalid Email addreess.", "error");
-    console.log("Invalid Email addreess.");
+    displayMessage("Invalid Email address.", "error");
+    console.log("Invalid Email address.");
     return;
   }
 
