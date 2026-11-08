@@ -1,10 +1,13 @@
 //display message
 export function displayMessage(message, type){
     const messageElement = document.getElementById("invite-message");
-    if(!messageElement) return;
+    if(!messageElement){
+        console.error("Invite message element not found.", error);
+        return;
+    } 
     messageElement.textContent = message;
     messageElement.className = `invite-message ${type}`;
-    messageElement.style.display = "block";
+    // messageElement.style.display = "block";
 }
 
 //display team members -- function
@@ -75,7 +78,7 @@ export  function displayTeamMembers(members, currentUserId) {
 
 //inivitation button -- loading state
 export function setInviteLoading(isLoading){
-    const inviteButton = document.querySelector("invite-button");
+    const inviteButton = document.querySelector(".invite-button");
     inviteButton.disabled = isLoading;
     inviteButton.textContent = isLoading ? "Sending inivation" : "Send invite";
 }

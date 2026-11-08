@@ -41,7 +41,8 @@ export async function getMemberRole(userID){
 export async function inviteTeamMembers(email, role){
 
     const {error, data} = await supabase.functions.invoke(
-        "invite-message",{
+        "invite-staff",
+        {
             body: {
                 email: email,
                 role: role
@@ -49,6 +50,7 @@ export async function inviteTeamMembers(email, role){
         });
 
     if(error){
+        console.error("Edge Function invocation failed:", error);
         throw error;
     }
 

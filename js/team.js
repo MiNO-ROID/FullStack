@@ -31,7 +31,6 @@ async function initializeTeamDashboard() {
     console.log("Owner authenticated.", user.email);
 
     await loadTeamMembers(user.id);
-
   } catch (error) {
     console.error("Dashboard initialization failed: ", error);
     // window.location.replace("./signIn.html");
@@ -54,9 +53,20 @@ async function loadTeamMembers(currentUserId) {
   }
 }
 
-// validate email
-function validateEmail() {
+// Email validation function
+function validateEmail(email) {
+  // Ensure the received value is a string
+  if (typeof email !== "string") {
+    console.error("Expected email to be a string:", email);
+    return false;
+  }
+
+  // Remove unnecessary spaces
+  email = email.trim().toLowerCase();
+
+  // Email validation pattern
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   return emailPattern.test(email);
 }
 
@@ -66,7 +76,7 @@ inviteForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   //get form values
-  const email = emailInput.value.trim().toLowerCase();
+  const email = String(emailInput.value || "").trim().toLowerCase();
   const role = roleInput.value;
 
   // check email validation
@@ -108,7 +118,7 @@ inviteForm.addEventListener("submit", async (event) => {
   }
 });
 
-// //sign-out 
+// //sign-out
 // async function handleSignOut(){
 //     try{
 //         await signOut();
