@@ -9,7 +9,13 @@ export function displayMessage(message, type){
 
 //display team members -- function
 export  function displayTeamMembers(members, currentUserId) {
-    const teamMemberList = document.getElementById("team-member-list");
+    const teamMemberList = document.getElementById("team-members-list");
+
+    //check if member element list
+    if(!teamMemberList){
+        console.error("Team member container not found.", error);
+        return;
+    }
 
     //clear existing content
     teamMemberList.innerHTML = " ";
@@ -63,7 +69,7 @@ export  function displayTeamMembers(members, currentUserId) {
     });
 
     //display all members
-    teamMemberList.appendChild("team-member-list");
+    teamMemberList.appendChild(fragment);
 
 }
 
