@@ -1,8 +1,23 @@
+@import url(./style.css);
+
+/* *,
+*::before,
+*::after{
+  box-sizing: border-box;
+} */
+
+body{
+  color: var(--l-text);
+  min-height: 100vh;
+  margin: 0;
+  font-family: var(--font);
+  background-color: var(--l-ground);
+  -webkit-font-smoothing: antialiased;
+}
 /* DASHBOARD */
 .dashboard {
   display: flex;
   min-height: 100vh;
-  font-family: var(--font);
   background-color: var(--l-ground);
 }
 
@@ -68,12 +83,154 @@ svg {
   transition: 0.2s;
 }
 
+.nav-item:hover {
+  background-color: var(--l-active);
+  color: var(--l-text);
+}
+
 .nav-item.active {
-  background-color: var(--l-surface);
+  background-color: var(--l-secondary);
   color: var(--l-text);
 }
 
 .sidebar-bottom {
   margin-top: auto;
   padding-bottom: 15px;
+}
+
+/* main wrokspace -- main content */
+.main-content{
+  margin-left: 4em;
+  width: calc(100% - 50px);
+  padding: 2em 2em;
+}
+
+/* Top-header */
+.page-header{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 1em;
+}
+
+.header-titles h1{
+  font-size: var(--step-lead);
+  margin: 0 0 0.3em 0;
+}
+
+.header-titles p{
+  font-size: var(--step-small);
+  color: var(--l-muted);
+  margin: 0 0 0.5em 0;
+}
+
+.header-actions{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-secondary{
+  background-color: var(--l-secondary);
+  color: var(--l-text);
+  border-color: var(--l-border);
+  font-size: clamp(0.7rem, 0.8rem + 0.1vw, 9rem);
+  height: 30px;
+  padding: 0 0.8em;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  transition: opacity var(--t-hover), background-color var(--t-hover), border-color var(--t-hover);
+}
+
+.btn-secondary:hover{
+  background-color: var(--l-control);
+}
+
+.btn-primary{
+  background-color: var(--l-primary);
+  color: var(--l-on-primary);
+  border-color: var(--l-border);
+  font-size: clamp(0.7rem, 0.8rem + 0.1vw, 9rem);
+  height: 30px;
+  padding: 0 0.8em;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  transition: opacity var(--t-hover), background-color var(--t-hover), border-color var(--t-hover);
+}
+
+.btn-primary:hover{
+  opacity: 0.9;
+  background-color: var(--l-primary);
+}
+
+/* FILTER TABS BAR */
+.tabs-bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--l-border);
+  margin-bottom: 1em;
+  /* padding-bottom: 0.5em; */
+}
+
+.filter-tabs{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.tab-btn{
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0.5em 0em 0.6em;
+  margin-bottom: -1px;
+  font-size: clamp(0.7rem, 0.8rem + 0.1vw, 9rem);
+  color: var(--l-muted);
+  cursor: pointer;
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  transition: color var(--t-hover), border-color var(--t-hover);
+}
+
+.tab-btn:hover{
+  color: var(--l-text);
+}
+
+.tab-btn.active{
+  color: var(--l-text);
+  font-weight: 600;
+  border-bottom-color: var(--l-text);
+}
+
+.tab-count{
+  font-size: clamp(0.7rem, 0.8rem + 0.1vw, 9rem);
+  opacity: 0.95;
+  font-variant-numeric: tabular-nums;
+}
+
+.theme-cycle-btn{
+  background: none;
+  border: none;
+  color: var(--l-muted);
+  cursor: pointer;
+  padding: 0.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+
+  svg{
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.theme-cycle-btn:hover{
+  opacity: 0.8px;
+  color: var(--l-text);
 }

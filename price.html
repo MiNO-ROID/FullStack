@@ -95,6 +95,67 @@
           </a>
         </div>
       </aside>
+
+      <!-- main content -->
+       <main class="main-content">
+        <!-- header -->
+        <header class="page-header"> 
+          <div class="header-titles">
+            <h1>Prices</h1>
+            <p class="header-subtitle" id="price-status-subtitle">
+              0 of 6,867 prices differ from the old price list. Nothing waiting to save.
+            </p>
+          </div>
+          <div class="header-actions">
+            <button type="button" class="btn-secondary" id="discard-btn" disabled>
+              Discard
+            </button>
+            <button type="button" class="btn-primary" id="save-btn" disabled>
+              Save changes
+            </button>
+          </div>
+        </header>
+
+        <!-- FILTER TABS BAR -->
+        <div class="tabs-bar">
+          <div class="filter-tabs" role="tablist">
+            <button type="button" class="tab-btn" data-tab="all">
+              All products <span class="tab-count" id="tab-all-count"> 6867 </span>
+            </button>
+            <button type="button" class="tab-btn" data-tab="changed">
+              Changed <span class="tab-count" id="tab-changed-count"> 0 </span>
+            </button>
+            <button type="button" class="tab-btn" data-tab="nophoto">
+              No Photos <span class="tab-count" id="tab-nophoto-count"> 6867 </span>
+            </button>
+          </div>
+
+          <button type="button" class="theme-cycle-btn" id="theme-toggle-btn" title="Toggle theme" aria-label="Toggle theme">
+            <svg width="14" height="18" viewBox="0 0 14 18" fill="currentColor">
+              <path d="M7 1l3 3.5H4L7 1zm0 16l-3-3.5h6L7 17z" /> 
+              <circle cx="7" cy="9" r="1.6" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Two-Column-Layout -->
+
+        <div class="content-layout">
+
+          <!-- Left-table-column -->
+           <section class="table-section">
+
+           </section>
+
+           <!-- Right -- Change-card -->
+            <aside class="department-card">
+
+            </aside>
+            
+        </div>
+
+        </div>
+       </main>
       </div>
   </body>
 </html>
