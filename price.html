@@ -158,24 +158,44 @@
                 <!-- filter toolbar -->
                  <select id="filter-department" class="select-control" aria-label="Filter by department"></select>
                  <!-- total-product-count -->
+                 </div>
                   <div class="toolbar-count" id="filter-count"> 6867 products</div>
-              </div>
              </div>
 
-             <!-- Products tables -->
+             <!-- Products container -->
              <div class="table-wrapper">
-
+              <!-- Products tables -->
+              <table class="products-table">
+                <thead>
+                  <tr>
+                    <th class="col-photo">Photo</th>
+                    <th class="col-product sortable" data-sort="title" title="Sort by Product">
+                      Product
+                    </th>
+                    <th class="col-dept sortable" data-sort="department" title="Sort by Department">
+                      Department
+                    </th>
+                    <th class="col-price sortable" data-sort="price" title="Sort by Price">
+                      Price
+                    </th>
+                    <th class="col-change sortable" data-sort="change" title="Sort by Change">
+                      Change
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="products-tbody"></tbody>
+              </table>
              </div>
 
            </section>
 
            <!-- Right -- Department -- Change card -->
             <aside class="department-card">
-              <h>Change a department</h>
+              <h2>Change a department</h2>
               <p>Add the new prices to the unsaved changes, so you can check them before saving.</p>
               <div class="form-group">
                 <label for="bulk-department" class="form-label"> Department</label> <br>
-                <select class="select-control" id="bulk-department"></select>
+                <select class="input-control" id="bulk-department"></select>
               </div>
 
               <div class="form-row">
@@ -193,10 +213,11 @@
                     <option value="Exact cents"> Exact cents </option>
                   </select>
                 </div>
+              </div>
 
                 <!-- preview -->
-                 <div class="bulk-preview">
-                  <div class="preview-row">
+              <div class="bulk-preview">
+              <div class="preview-row">
                 <span class="preview-label">Products</span>
                 <span class="preview-val" id="preview-count">101</span>
               </div>
@@ -206,11 +227,11 @@
               </div>
               <div class="preview-row">
                 <span class="preview-label" id="preview-sample-name">18cm Weber &amp; Costello...</span>
-                <span class="preview-val" id="preview-sample-price">$299.00 &rarr;<br />$313.95</span>
+                <span class="preview-val" id="preview-sample-price">$299.00 &rarr; $313.95</span>
               </div>
-                 </div>
+              </div>
 
-              <button type="button" class="btn-secondary" id="apply-department-btn">
+              <button type="button" class="btn-savechange" id="apply-department-btn">
                 Add to unsaved changes
               </button>
             </aside>
