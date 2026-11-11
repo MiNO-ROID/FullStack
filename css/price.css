@@ -234,3 +234,99 @@ svg {
   opacity: 0.8px;
   color: var(--l-text);
 }
+
+/* <!-- Search Bar and Department Filter Toolbar --> */
+.content-layout{
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 260px;
+  gap: 25px;
+  align-items: start;
+}
+
+.table-toolbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 0.8em;
+}
+
+.toolbar-controls {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 10px;
+}
+
+.search-box{
+  position: relative;
+  width: 250px;
+}
+
+.search-box svg{
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  color: var(--l-muted);
+  pointer-events: none;
+}
+
+.search-box input {
+  width: 100%;
+  height: 30px;
+  padding: 0.2em 0.8em 0.2em 3em;
+  background-color: var(--l-surface);
+  border: 1px solid var(--l-border);
+  border-radius: 5px;
+  color: var(--l-text);
+  font-size: clamp(0.7rem, 0.8rem + 0.1vw, 9rem);
+  outline: none;
+  transition: border-color var(--t-hover);
+}
+
+.search-box input::placeholder {
+  color: var(--l-muted);
+}
+
+.search-box input:focus,
+.select-control:focus,
+.input-control:focus,
+.price-input-wrapper:focus-within {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px rgba(201, 162, 69, 0.25);
+}
+
+.select-control {
+  height: 30px;
+  padding: 0.2em 1em 0.2 1em;
+  background-color: var(--l-surface);
+  border: 1px solid var(--l-border);
+  border-radius: 5px;
+  color: var(--l-text);
+  font-size: clamp(0.7rem, 0.8rem + 0.1vw, 9rem);
+  outline: none;
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.toolbar-count {
+  font-size: clamp(0.7rem, 0.8rem + 0.1vw, 9rem);
+  color: var(--l-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.input-control {
+  height: 25px;
+  padding: 0em 0em 0em 0em;
+  background-color: var(--l-surface);
+  border: 1px solid var(--l-border);
+  border-radius: 5px;
+  color: var(--l-text);
+  font-size: clamp(0.7rem, 0.8rem + 0.1vw, 9rem);
+  outline: none;
+  cursor: pointer;
+  min-width: 100px;
+}

@@ -139,17 +139,80 @@
         </div>
 
         <!-- Two-Column-Layout -->
-
         <div class="content-layout">
 
           <!-- Left-table-column -->
            <section class="table-section">
+            
+            <!-- Search Bar and Department Filter Toolbar -->
+             <div class="table-toolbar">
+              <div class="toolbar-controls">
+                <!-- search-box -->
+                <div class="search-box">
+                  <svg id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="7"/>
+                    <path d="M20 20l-4-4"/>
+                  </svg>
+                  <input type="search" placeholder="Title or shop code" id="search-input" autocomplete="off">
+                </div>
+                <!-- filter toolbar -->
+                 <select id="filter-department" class="select-control" aria-label="Filter by department"></select>
+                 <!-- total-product-count -->
+                  <div class="toolbar-count" id="filter-count"> 6867 products</div>
+              </div>
+             </div>
+
+             <!-- Products tables -->
+             <div class="table-wrapper">
+
+             </div>
 
            </section>
 
-           <!-- Right -- Change-card -->
+           <!-- Right -- Department -- Change card -->
             <aside class="department-card">
+              <h>Change a department</h>
+              <p>Add the new prices to the unsaved changes, so you can check them before saving.</p>
+              <div class="form-group">
+                <label for="bulk-department" class="form-label"> Department</label> <br>
+                <select class="select-control" id="bulk-department"></select>
+              </div>
 
+              <div class="form-row">
+                <div>
+                  <label for="bulk-percentage" class="form-label"> Change by % </label> <br>
+                  <input type="number" id="bulk-percentage" class="input-control" value="5" step="1">
+                </div>
+
+                <div>
+                  <label for="bulk-round" class="form-label"> Round to </label> <br>
+                  <select id="bulk-round" class="input-control">
+                    <option value="$x.95"> $x.95 </option>
+                    <option value="$x.99"> $x.99 </option>
+                    <option value="Nearest 10c"> Nearest 10c </option>
+                    <option value="Exact cents"> Exact cents </option>
+                  </select>
+                </div>
+
+                <!-- preview -->
+                 <div class="bulk-preview">
+                  <div class="preview-row">
+                <span class="preview-label">Products</span>
+                <span class="preview-val" id="preview-count">101</span>
+              </div>
+              <div class="preview-row">
+                <span class="preview-label">Average price</span>
+                <span class="preview-val" id="preview-avg">$448.19 &rarr; $470.99</span>
+              </div>
+              <div class="preview-row">
+                <span class="preview-label" id="preview-sample-name">18cm Weber &amp; Costello...</span>
+                <span class="preview-val" id="preview-sample-price">$299.00 &rarr;<br />$313.95</span>
+              </div>
+                 </div>
+
+              <button type="button" class="btn-secondary" id="apply-department-btn">
+                Add to unsaved changes
+              </button>
             </aside>
             
         </div>
