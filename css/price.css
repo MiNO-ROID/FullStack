@@ -504,16 +504,16 @@ svg {
 }
 
 /* pagination-section */
-.pagination-bar{
+.Pagination-bar{
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1em 0em;
-  font-size: var(--step-small);
+  font-size: clamp(0.6rem, 0.7rem + 0.1vw, 8rem);
   color: var(--l-muted);
 }
 
-.pagination-controls{
+.Pagination-controls{
   display: flex;
   align-items: center;
   gap: 10px;
