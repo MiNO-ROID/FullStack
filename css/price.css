@@ -502,3 +502,19 @@ svg {
 .products-table td:first-child {
   padding-left: 0;
 }
+
+/* pagination-section */
+.pagination-bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em 0em;
+  font-size: var(--step-small);
+  color: var(--l-muted);
+}
+
+.pagination-controls{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
