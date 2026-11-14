@@ -32,7 +32,7 @@ const friendly = (err, fallback) => (err && (err.message || err.error_descriptio
 
 let CATS = [], CAT = {};
 let PRODUCTS = [], BY_ID = {};
-let list = store.get("amc-list", []); // visitor's enquiry list (ids), kept in this browser only
+let list = store.get("amc-list", []); // visitor's enquiry list
 
 const livePrice = (p) => p.price;
 
@@ -228,7 +228,7 @@ function renderDrawer(sent) {
   const total = items.reduce((s, p) => s + livePrice(p), 0);
   $("#drawerBody").innerHTML = sent ? `<p class="ok">${esc(sent)}</p><button class="btn quiet" type="button" data-close-drawer>Keep browsing</button>` :
     !items.length ? `<p class="soft">Your list is empty. Add maps, guides or globes, then send them to us as one enquiry. We'll check stock and hold them for pickup or post them.</p><div><button class="btn" type="button" data-go="shop">Browse the shop</button></div>` :
-    `<ul class="list-items">${items.map(p => `<li><span>${esc(p.title)}<small>${esc(p.type)}</small></span><span class="num">${money(livePrice(p))}</span><button class="rm" type="button" data-rm="${p.id}" aria-label="Remove ${esc(p.title)}">${ICON_X}</button></li>`).join("")}</ul>
+      `<ul class="list-items">${items.map(p => `<li><span>${esc(p.title)}<small>${esc(p.type)}</small></span><span class="num">${money(livePrice(p))}</span><button class="rm" type="button" data-rm="${p.id}" aria-label="Remove ${esc(p.title)}">${ICON_X}</button></li>`).join("")}</ul>
     <div class="total"><span>Total at today's prices</span><span class="num">${money(total)}</span></div>
     <form id="listForm" class="fields" novalidate>
       <div class="field"><label for="lf-name">Name</label><input id="lf-name" required autocomplete="name" maxlength="120"></div>
