@@ -7,7 +7,7 @@ export function displayMessage(message, type){
     } 
     messageElement.textContent = message;
     messageElement.className = `invite-message ${type}`;
-    // messageElement.style.display = "block";
+    messageElement.style.display = "block";
 }
 
 //display team members -- function

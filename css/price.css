@@ -518,3 +518,26 @@ svg {
   align-items: center;
   gap: 10px;
 }
+
+/* .price-input{
+  height: 25px;
+  max-width: 50px;
+  background-color: var(--l-ground);
+  border: none;
+  outline: none;
+}
+
+.price-input-wrapper{
+  height: 25px;
+  padding: 0em;
+  margin: 0.4em 0em;
+  background-color: var(--l-surface);
+  border: 1px solid var(--l-border);
+  border-radius: 5px;
+  color: var(--l-text);
+  font-size: clamp(0.6rem, 0.7rem + 0.1vw, 8rem);
+  outline: none;
+  cursor: pointer;
+  width: 157px;
+  text-align: center;
+} */

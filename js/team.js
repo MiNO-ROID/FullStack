@@ -1,6 +1,5 @@
 //Import required modules
-import { supabase } from "./supabaseClient.js";
-import { checkUserRole, signOut } from "./authGuard.js";
+import { checkUserRole} from "./authGuard.js";
 import { getTeamMembers, inviteTeamMembers } from "./teamService.js";
 import {
   displayTeamMembers,
@@ -13,8 +12,6 @@ import {
 const inviteForm = document.getElementById("invite-form");
 const emailInput = document.getElementById("email");
 const roleInput = document.getElementById("role");
-const button = document.querySelector(".invite-button");
-// const message = document.getElementById("invite-message");
 
 //team-dashboard
 async function initializeTeamDashboard() {
