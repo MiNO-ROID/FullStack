@@ -1,4 +1,4 @@
-import { sb, photoUrl } from "./supabase.js";
+import { sb, photoUrl } from "../supabase.js";
 
 const FAMILY_COLOUR = { map: "#3a63a8", topo: "#5f86c4", chart: "#2f7f8f", globe: "#8ea4cc", book: "var(--cover-gold)", phrase: "#9aa6bd", gift: "#9aa6bd" };
 const CAT_FAMILY = { nz: "map", aust: "map", internat: "map", topo: "topo", travel: "book", language: "phrase", globes: "globe", gps: "gift", software: "chart", posters: "gift", access: "gift", miscell: "gift" };
