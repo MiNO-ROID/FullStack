@@ -1,5 +1,5 @@
 //import client from supabase
-import { supabase } from "./supabaseClient";
+import { supabase } from "./supabaseClient.js";
 
 //get all categories (department) from categories table
 export async function getCategories() {
@@ -114,6 +114,26 @@ export async function savePriceChanges(updatedPrice, userId) {
     const now = new Date().toISOString();
 
     for(const product of updatedPrice){
-        
+        //update price in products table
+        const {error: updateError} = await supabase 
+        .from("products")
+        .update({price: updatedPrice, updated_at: now})
+        .eq("id", product.id);
+
+        if(updateError){
+          console.error("Unable to update product price", error);
+          throw updateError;
+        }
+
+        //record history in price_changes table if user is logged in
+        if(userId){
+          await supabase .from("price_changes").insert({
+            product_id: product.id,
+            old_price: product.oldPrice,
+            new_price: product.currentPrice,
+            changed_by: userId,
+            changed_at: now
+          });
+        }
     }
 }
