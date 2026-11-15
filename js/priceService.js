@@ -28,12 +28,12 @@ export async function getAllProducts() {
     const { error, data } = await supabase
       .from("products")
       .select(
-        "id, categories_id, legacy_code, title, product_card, cover_family, base_price, price, photo_path",
+        "id, category_id, legacy_code, title, product_type, cover_family, base_price, price, photo_path",
       )
       .order("id", { ascending: true })
       .range(start, end);
 
-    if (error) {
+    if(error) {
       console.error("Failed to retrieve products:", error);
       throw error;
     }
@@ -54,14 +54,15 @@ export async function getAllProducts() {
 export function normalizeProduct(row, categories){
     //find matching categories name
     const category = categories.find(
-        (item) => item.id === row.categories_id
-    )
+        (item) => item.id === row.category_id
+    );
+
     const departmentName = category ? category.name : row.category_id ;
     const startPrice = Number(row.price || 0);
 
     return{
         id: row.id,
-        category_id: row.category_id,
+        categoryId: row.category_id,
         department: departmentName,
         code: row.legacy_code || "",
         title: row.title || "",
@@ -97,7 +98,7 @@ export function roundPrice(rawPrice, roundOption){
     }
 
     if(roundOption === "Nearest 10c"){
-        return Number((Math.round(exactPrice * 10) / 10).toFixed(10));
+        return Number((Math.round(exactPrice * 10) / 10).toFixed(2));
     }
 
     return exactPrice;
@@ -106,22 +107,22 @@ export function roundPrice(rawPrice, roundOption){
 //Calculate new price using percentage and round option
 export function calculateNewPrice(currentPrice, percentage, roundOption){
     const increasedPrice = currentPrice * (1 + percentage / 100);
-    return roundOption(increasedPrice, roundOption);
+    return roundPrice(increasedPrice, roundOption);
 }
 
 //save updated price to supabase
-export async function savePriceChanges(updatedPrice, userId) {
+export async function savePriceChanges(updatedProducts, userId) {
     const now = new Date().toISOString();
 
-    for(const product of updatedPrice){
+    for(const product of updatedProducts){
         //update price in products table
         const {error: updateError} = await supabase 
         .from("products")
-        .update({price: updatedPrice, updated_at: now})
+        .update({price: product.currentPrice, updated_at: now})
         .eq("id", product.id);
 
         if(updateError){
-          console.error("Unable to update product price: ", error);
+          console.error("Unable to update product price: ", updateError);
           throw updateError;
         }
 

@@ -89,10 +89,10 @@ async function InitializePriceDashboard() {
 function refreshCounts() {
   const totalCount = allProducts.length;
   const changedCount = allProducts.filter((p) => isPriceChanged(p)).length;
-  const noPhoto = allProducts.filter((p) => !p.hasPhoto).length;
+  const noPhotoCount = allProducts.filter((p) => !p.hasPhoto).length;
 
   updateHeaderStatus(totalCount, changedCount);
-  updateTabsCount(totalCount, changedCount, noPhoto);
+  updateTabsCount(totalCount, changedCount, noPhotoCount);
 }
 
 // Filter prodcuts by Tab, Department and Search
@@ -120,7 +120,7 @@ function filterProductsList() {
     // Fast search -- check if every typed is inside product.searchText
     if (search.length > 0) {
       const matchesAllWords = search.every((word) =>
-        product.searchtext.includes(word),
+        product.searchText.includes(word),
       );
 
       if (!matchesAllWords) {
@@ -155,7 +155,7 @@ function sortProductsList() {
 
     if (sortColumn === "change") {
       const changeA = a.currentPrice - a.oldPrice;
-      const changeB = b.currentPrice - a.oldPrice;
+      const changeB = b.currentPrice - b.oldPrice;
       return (changeA - changeB) * multiplier;
     }
 
@@ -228,7 +228,7 @@ tabButtons.forEach((button)=> {
         tabButtons.forEach((btn) => btn.classList.remove("active"));
         button.classList.add("active");
 
-        activeTabs.button.dataset.tab;
+        activeTabs = button.dataset.tab;
         currentPage = 1;
         applyAllTogether();
 
@@ -261,11 +261,9 @@ productTBody.addEventListener("change", (event) => {
 
     const productId = Number(event.target.dataset.value);
     const newPrice = parseFloat(event.target.value);
-    const product = allProducts.find( (p) => {
-        p.id === productId
-    });
+    const product = allProducts.find( (p) => p.id === productId );
 
-    if(product && !NaN(newPrice) && newPrice >= 0){
+    if(product && !isNaN(newPrice) && newPrice >= 0){
         product.currentPrice = Number(newPrice.toFixed(2));
     }
 
@@ -303,7 +301,7 @@ applyDeptBtn.addEventListener("click", () => {
     const roundOption = bulkRound.value;
 
     allProducts.forEach((product) => {
-        if(product.categoryId = deptId){
+        if(product.categoryId === deptId){
             product.currentPrice = calculateNewPrice(
                 product.currentPrice, 
                 percentage, 
@@ -343,7 +341,7 @@ saveBtn.addEventListener("click", async () => {
         await savePriceChanges(changedProduct, currentUser?.id);
 
         changedProduct.forEach((product) => {
-            product.currentPrice = product.newPrice;
+            product.oldPrice = product.currentPrice;
         });
 
         applyAllTogether();
@@ -362,7 +360,7 @@ saveBtn.addEventListener("click", async () => {
 // Toggle Dark / White Theme
 themeToggleBtn.addEventListener("click",() => {
     const html = document.documentElement;
-    const currentTheme = getAttribute("data-theme");
+    const currentTheme = html.getAttribute("data-theme");
     html.setAttribute("data-theme", currentTheme === "light" ? "dark" : "light");
 });
 

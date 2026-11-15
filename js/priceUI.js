@@ -48,27 +48,27 @@ export function updateHeaderStatus(totalCount, changedCount) {
   } else {
     subtitle.textContent = `${changedCount.toLocaleString()} of ${totalCount.toLocaleString()} prices differ from the old price list. ${changedCount.toLocaleString()} waiting to save.`;
     discardBtn.disabled = false;
-    discardBtn.disabled = false;
+    saveBtn.disabled = false;
   }
 }
 
 //Update numbers on all tabs -- all photos, changed, no photos
-export function updateTabsCount() {
+export function updateTabsCount(totalCount, changedCount, noPhotoCount) {
   document.getElementById("tab-all-count").textContent =
     totalCount.toLocaleString();
   document.getElementById("tab-changed-count").textContent =
     changedCount.toLocaleString();
-  document.getElementById("tab-noPhoto-count").textContent =
+  document.getElementById("tab-nophoto-count").textContent =
     noPhotoCount.toLocaleString();
 }
 
 //Create a single table row for (<tr>) for each product
-function createProductRow() {
+function createProductRow(product) {
   const tr = document.createElement("tr");
   const changed = isPriceChanged(product);
 
   if (changed) {
-    tr.className("row-changed");
+    tr.className = "row-changed";
   }
 
   //calculate price difference for change column
@@ -82,7 +82,7 @@ function createProductRow() {
     changeClass = diff < 0 ? "change-cell negative" : "change-cell changed";
   }
 
-  tr.innerHtml = `    
+  tr.innerHTML = `    
     <td>
       <div class="book-thumb">
         <span class="spine"></span>
@@ -122,7 +122,7 @@ function createProductRow() {
 
 //display current page of products in the table
 export function displayProducts(productsOnPage, totalFilteredCount){
-    const tbody = document.gegtElementById("products-tbody");
+    const tbody = document.getElementById("products-tbody");
     const filterCount = document.getElementById("filter-count");
 
     //update products count
@@ -155,13 +155,13 @@ export function displayProducts(productsOnPage, totalFilteredCount){
 
 // Update pagination & previous/next buttons
 export function updatePagination(currentPage, pagesize, totalFilteredCount){
-    const pagInfo = document.getElementById("pagination-info");
+    const pagInfo = document.getElementById("Pagination-info");
     const prevBtn = document.getElementById("prev-page-btn");
     const nextBtn = document.getElementById("next-page-btn");
 
     const totalPages = Math.max(1, Math.ceil(totalFilteredCount / pagesize));
 
-    if(totalFilteredCount === o){
+    if(totalFilteredCount === 0){
         pagInfo.textContent = "0 of 0";
     }else{
         const start = (currentPage - 1) * pagesize + 1;
@@ -204,7 +204,7 @@ export function displayDepartmentPreview(departmentProducts, percentage, roundOp
     avgEl.textContent = `$${oldAvg} --> $${newAvg}`;
 
     // Show first product in the department as sample - example
-    const firstProduct = departmentProducts.length[0];
+    const firstProduct = departmentProducts[0];
     const sampleNewPrice = calculateNewPrice(firstProduct.currentPrice, percentage, roundOption);
     const shortTitle = firstProduct.title.length > 22
       ? firstProduct.title.slice(0, 20) + "..."
