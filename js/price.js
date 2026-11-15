@@ -81,7 +81,7 @@ async function InitializePriceDashboard() {
 
     console.log("Price Dashboard initialized successfully.");
   } catch (error) {
-    console.error("failed to initialize the price dashboard.", error);
+    console.error("Failed to initialize the price dashboard:", error);
   }
 }
 
@@ -255,7 +255,7 @@ sortHeaders.forEach((header) => {
 });
 
 // Edit a product price in a table
-productTBody.addEventListener(("change", (event) => {
+productTBody.addEventListener("change", (event) => {
 
     if(!event.target.classList.contains("price-input")) return;
 
@@ -272,7 +272,7 @@ productTBody.addEventListener(("change", (event) => {
     applyAllTogether();
     updateBulkPreview();
     
-}));
+});
 
 // Pagination: previous - next  ---   buttons
 
@@ -350,7 +350,7 @@ saveBtn.addEventListener("click", async () => {
         updateBulkPreview();
 
     }catch(error){
-        console.error("Failed to save price changes:", error);
+        console.error("Error saving prices: ", error);
     }finally{
         // saveBtn.disabled = false;
         saveBtn.textContent = "Saved";
@@ -360,11 +360,11 @@ saveBtn.addEventListener("click", async () => {
 });
 
 // Toggle Dark / White Theme
-themeToggleBtn.addEventListener(("click",() => {
+themeToggleBtn.addEventListener("click",() => {
     const html = document.documentElement;
     const currentTheme = getAttribute("data-theme");
     html.setAttribute("data-theme", currentTheme === "light" ? "dark" : "light");
-}));
+});
 
 
 // Initialize Dashboard

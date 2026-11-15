@@ -9,7 +9,7 @@ export async function getCategories() {
     .order("sort_order", { ascending: true });
 
   if (error) {
-    console.error("Failed to fetch categories.", error);
+    console.error("Failed to fetch categories: ", error);
     throw error;
   }
 
@@ -34,7 +34,7 @@ export async function getAllProducts() {
       .range(start, end);
 
     if (error) {
-      console.error("Failed to retrieve products.", error);
+      console.error("Failed to retrieve products:", error);
       throw error;
     }
 
@@ -72,7 +72,7 @@ export function normalizeProduct(row, categories){
         hasPhoto: Boolean(row.photo_path),
 
         //presave lowercase text so search is instant - faster
-        searchText: `&{row.title || ""} &{row.legacy_code || ""} &{departmentName} &{row.product_type || ""}`.toLowerCase()
+        searchText: `${row.title || ""} ${row.legacy_code || ""} ${departmentName} ${row.product_type || ""}`.toLowerCase()
     };
 }
 
@@ -121,7 +121,7 @@ export async function savePriceChanges(updatedPrice, userId) {
         .eq("id", product.id);
 
         if(updateError){
-          console.error("Unable to update product price", error);
+          console.error("Unable to update product price: ", error);
           throw updateError;
         }
 

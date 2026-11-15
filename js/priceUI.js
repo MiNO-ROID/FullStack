@@ -1,5 +1,5 @@
 //import functions from priceService.js
-import { isPriceChanged, calculateNewPrice } from "./priceService";
+import { isPriceChanged, calculateNewPrice } from "./priceService.js";
 
 //populate both department dropdown from categories table
 export function displayDepartments(categories) {
