@@ -297,7 +297,7 @@ bulkRound.addEventListener("change", updateBulkPreview);
 applyDeptBtn.addEventListener("click", () => {
 
     const deptId = bulkDepartment.value;
-    const percentage = parseFloat(bulkDepartment.value) || 0;
+    const percentage = parseFloat(bulkPercentage.value) || 0;
     const roundOption = bulkRound.value;
 
     allProducts.forEach((product) => {
