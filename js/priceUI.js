@@ -73,12 +73,12 @@ function createProductRow() {
 
   //calculate price difference for change column
   const diff = product.currentPrice - product.oldPrice;
-  let changedText = "-";
+  let changeText = "-";
   let changeClass = "change-cell";
 
   if (changed) {
     const sign = diff > 0 ? "+" : "-";
-    changedText = `${sign}$${Math.abs(diff).toFixed(2)}`;
+    changeText = `${sign}$${Math.abs(diff).toFixed(2)}`;
     changeClass = diff < 0 ? "change-cell negative" : "change-cell changed";
   }
 
