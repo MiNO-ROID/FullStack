@@ -1,12 +1,12 @@
 //Import required modules
-import { checkUserRole, signOut} from "./authGuard.js";
-import { getTeamMembers, inviteTeamMembers } from "./teamService.js";
+import { checkUserRole, signOut} from "../auth/authGuard.js";
+import { getTeamMembers, inviteTeamMembers } from "../team/teamService.js";
 import {
   displayTeamMembers,
   setInviteLoading,
   clearInviteForm,
   displayMessage,
-} from "./teamUI.js";
+} from "../team/teamUI.js";
 
 // DOM elements
 const inviteForm = document.getElementById("invite-form");

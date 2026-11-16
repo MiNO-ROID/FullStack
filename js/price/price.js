@@ -1,5 +1,5 @@
 // Import required modules
-import { checkUserAuthentication, signOut } from "./authGuard.js";
+import { checkUserAuthentication, signOut } from "../auth/authGuard.js";
 
 import {
   getCategories,
@@ -8,7 +8,7 @@ import {
   isPriceChanged,
   calculateNewPrice,
   savePriceChanges,
-} from "./priceService.js";
+} from "../price/priceService.js";
 
 import {
   displayDepartments,
@@ -17,7 +17,7 @@ import {
   displayProducts,
   updatePagination,
   displayDepartmentPreview,
-} from "./priceUI.js";
+} from "../price/priceUI.js";
 
 // Sample global statue variables
 let currentUser = null;

@@ -1,5 +1,5 @@
 //import client from supabase
-import { supabase } from "./supabaseClient.js";
+import { supabase } from "../config/supabaseClient.js";
 
 //get all categories (department) from categories table
 export async function getCategories() {
