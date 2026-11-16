@@ -494,13 +494,12 @@ svg {
 }
  
 .products-table td {
-  padding: 8px;
+  padding: 0.7em;
   vertical-align: middle;
-  font-size: 12.5px;
 }
  
 .products-table td:first-child {
-  padding-left: 0;
+  align-items: center;
 }
 
 /* pagination-section */
@@ -519,25 +518,104 @@ svg {
   gap: 10px;
 }
 
-/* .price-input{
-  height: 25px;
-  max-width: 50px;
-  background-color: var(--l-ground);
-  border: none;
-  outline: none;
+/* innerHTML -- Table body */
+
+/* Book / Atlas Cover Thumbnail */
+.book-thumb {
+  width: 30px;
+  height: 40px;
+  border-radius: 2px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+
+.book-thumb .spine {
+  width: 5px;
+  background-color: var(--navy);
+  height: 100%;
+}
+
+.book-thumb .cover {
+  flex: 1;
+  background-color: var(--cover-gold);
+  height: 100%;
+}
+
+.book-thumb.has-photo .cover {
+  background: linear-gradient(135deg, var(--steel), var(--sea));
+} 
+
+.product-title{
+  color: var(--l-text);
+  font-size: clamp(0.7rem, 0.8rem + 0.1vw, 9rem);
+  text-align: start;
+  margin-bottom: 0.2em;
+}
+
+.product-meta{
+  color: var(--l-muted);
+  font-size: clamp(0.6rem, 0.7rem + 0.1vw, 8rem);
+  text-align: start;
+}
+
+.dept-cell{
+  color: var(--l-text);
+  font-size: clamp(0.7rem, 0.8rem + 0.1vw, 9rem);
+  text-align: center;
+}
+
+.price-cell{
+  text-align: center;
 }
 
 .price-input-wrapper{
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+
   height: 25px;
-  padding: 0em;
-  margin: 0.4em 0em;
+  width: 75px;
+  padding: 0 0.5em;
+
   background-color: var(--l-surface);
-  border: 1px solid var(--l-border);
+  border: 2px solid var(--l-border);
   border-radius: 5px;
+  transition: border-color var(--t-hover);
+}
+
+.price-input-wrapper.is-changed{
+  border-color: var(--l-signal);
+}
+
+.currency-symbol{
+  font-size: clamp(0.6rem, 0.7rem + 0.1vw, 8rem);
+  color: var(--l-muted);
+  margin-right: 4px;
+  user-select: none;
+}
+
+.price-input{
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
   color: var(--l-text);
   font-size: clamp(0.6rem, 0.7rem + 0.1vw, 8rem);
-  outline: none;
-  cursor: pointer;
-  width: 157px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  padding: 0;
+}
+
+.change-cell{
   text-align: center;
-} */
+  color: var(--l-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.empty-state{
+  text-align: center;
+  color: var(--l-muted);
+  /* padding: 2.5em 1em !important; */
+}

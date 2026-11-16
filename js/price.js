@@ -259,7 +259,7 @@ productTBody.addEventListener("change", (event) => {
 
     if(!event.target.classList.contains("price-input")) return;
 
-    const productId = Number(event.target.dataset.value);
+    const productId = Number(event.target.dataset.id);
     const newPrice = parseFloat(event.target.value);
     const product = allProducts.find( (p) => p.id === productId );
 

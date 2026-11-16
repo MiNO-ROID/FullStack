@@ -82,7 +82,7 @@ function createProductRow(product) {
     changeClass = diff < 0 ? "change-cell negative" : "change-cell changed";
   }
 
-  tr.innerHTML = `    
+  tr.innerHTML = `   
     <td>
       <div class="book-thumb">
         <span class="spine"></span>
@@ -92,7 +92,7 @@ function createProductRow(product) {
 
     <td>
         <div class="product-title">
-            ${product.title}
+            ${(product.title)}
         </div>
         <div class="product-meta">
             ${product.code} · ${product.type}
