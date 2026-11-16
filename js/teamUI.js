@@ -7,7 +7,7 @@ export function displayMessage(message, type){
     } 
     messageElement.textContent = message;
     messageElement.className = `invite-message ${type}`;
-    // messageElement.style.display = "block";
+    messageElement.style.display = "block";
 }
 
 //display team members -- function
@@ -80,7 +80,7 @@ export  function displayTeamMembers(members, currentUserId) {
 export function setInviteLoading(isLoading){
     const inviteButton = document.querySelector(".invite-button");
     inviteButton.disabled = isLoading;
-    inviteButton.textContent = isLoading ? "Sending inivation" : "Send invite";
+    inviteButton.textContent = isLoading ? "Sending invitation" : "Send invite";
 }
 
 //clear invite form

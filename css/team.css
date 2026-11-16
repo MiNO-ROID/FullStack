@@ -35,6 +35,7 @@ svg {
 
 .sidebar-logo {
   height: 60px;
+  max-width: 60px;
 
   display: flex;
   justify-content: center;
@@ -67,8 +68,13 @@ svg {
   transition: 0.2s;
 }
 
+.nav-item:hover {
+  background-color: var(--l-active);
+  color: var(--l-text);
+}
+
 .nav-item.active {
-  background-color: var(--l-surface);
+  background-color: var(--l-secondary);
   color: var(--l-text);
 }
 
@@ -78,7 +84,6 @@ svg {
 }
 
 /* MAIN - CONTENT */
-
 .main-content {
   margin-left: 4em;
   width: calc(100% - 50px);
@@ -87,7 +92,6 @@ svg {
 }
 
 /* PAGE HEADER */
-
 .page-header {
   margin-bottom: 1.5em;
 }
