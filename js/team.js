@@ -1,5 +1,5 @@
 //Import required modules
-import { checkUserRole} from "./authGuard.js";
+import { checkUserRole, signOut} from "./authGuard.js";
 import { getTeamMembers, inviteTeamMembers } from "./teamService.js";
 import {
   displayTeamMembers,
@@ -12,6 +12,8 @@ import {
 const inviteForm = document.getElementById("invite-form");
 const emailInput = document.getElementById("email");
 const roleInput = document.getElementById("role");
+
+const logOutBtn = document.getElementById("logOut-btn");
 
 //team-dashboard
 async function initializeTeamDashboard() {
@@ -112,6 +114,23 @@ inviteForm.addEventListener("submit", async (event) => {
   } finally {
     //restore invitation button
     setInviteLoading(false);
+  }
+});
+
+// Sign out
+logOutBtn?.addEventListener("click", async (event) => {
+
+  event.preventDefault();
+
+  try{
+    console.log("Signing out...");
+    let result = await signOut();
+    //redirect to sign-in page after session is cleared.
+    window.location.replace("./signIn.html");
+  }catch(error){
+    console.error("Failed to sign out: ", error);
+    //fallback redirect even if the network fails
+    // window.location.replace("./signIn.html")
   }
 });
 

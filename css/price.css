@@ -562,6 +562,22 @@ body {
   background: linear-gradient(135deg, var(--steel), var(--sea));
 }
 
+.book-thumb.map .cover{
+  background-color: #3a63a8;
+}
+
+.book-thumb.topo .cover{
+  background-color: #5f86c4;
+}
+
+.book-thumb.chart .cover{
+  background-color: #2f7f8f;
+}
+
+.book-thumb.globe .cover{
+  background-color: #8ea4cc;
+}
+
 .product-title {
   color: var(--l-text);
   font-size: clamp(0.7rem, 0.8rem + 0.1vw, 9rem);

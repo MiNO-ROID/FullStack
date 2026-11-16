@@ -273,6 +273,7 @@ productTBody.addEventListener("change", (event) => {
     
 });
 
+// Save pirce on ENTER key press
 productTBody.addEventListener("keydown", (event) => {
   if (event.key === "Enter" && event.target.classList.contains("price-input")) {
     event.target.blur(); // Triggers the "change" event immediately
@@ -372,8 +373,20 @@ themeToggleBtn.addEventListener("click",() => {
 });
 
 // Sign out
-logOutBtn.addEventListener("click", () => {
-   signOut();
+logOutBtn?.addEventListener("click", async (event) => {
+
+  event.preventDefault();
+
+  try{
+    console.log("Signing out...");
+    await signOut();
+    //redirect to sign-in page after session is cleared.
+    window.location.replace("./signIn.html");
+  }catch(error){
+    console.error("Failed to sign out: ", error);
+    //fallback redirect even if the network fails
+    window.location.replace("./signIn.html")
+  }
 });
 
 // Warn before leaving pages with unsaved changes
@@ -381,7 +394,7 @@ window.addEventListener("beforeunload", (event) => {
   const hasUnsaved = allProducts.some((p) => isPriceChanged(p));
   if (hasUnsaved) {
     event.preventDefault();
-    event.returnValue = "Save your changes before leaving.";
+    event.returnValue = "";
   }
 });
 
