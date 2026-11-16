@@ -1,5 +1,5 @@
 // Import required modules
-import { checkUserAuthentication } from "./authGuard.js";
+import { checkUserAuthentication, signOut } from "./authGuard.js";
 
 import {
   getCategories,
@@ -36,6 +36,7 @@ let pageSize = 25;
 let searchTimer = null;
 
 //global variables
+const logOutBtn = document.getElementById("logOut-btn");
 const discardBtn = document.getElementById("discard-btn");
 const saveBtn = document.getElementById("save-btn");
 const themeToggleBtn = document.getElementById("theme-toggle-btn");
@@ -272,6 +273,12 @@ productTBody.addEventListener("change", (event) => {
     
 });
 
+productTBody.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" && event.target.classList.contains("price-input")) {
+    event.target.blur(); // Triggers the "change" event immediately
+  }
+});
+
 // Pagination: previous - next  ---   buttons
 
 // Previous Button
@@ -303,7 +310,7 @@ applyDeptBtn.addEventListener("click", () => {
     allProducts.forEach((product) => {
         if(product.categoryId === deptId){
             product.currentPrice = calculateNewPrice(
-                product.currentPrice, 
+                product.oldPrice, 
                 percentage, 
                 roundOption
             );
@@ -364,6 +371,19 @@ themeToggleBtn.addEventListener("click",() => {
     html.setAttribute("data-theme", currentTheme === "light" ? "dark" : "light");
 });
 
+// Sign out
+logOutBtn.addEventListener("click", () => {
+   signOut();
+});
+
+// Warn before leaving pages with unsaved changes
+window.addEventListener("beforeunload", (event) => {
+  const hasUnsaved = allProducts.some((p) => isPriceChanged(p));
+  if (hasUnsaved) {
+    event.preventDefault();
+    event.returnValue = "Save your changes before leaving.";
+  }
+});
 
 // Initialize Dashboard
 InitializePriceDashboard();

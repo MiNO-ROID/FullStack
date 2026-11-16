@@ -114,27 +114,28 @@ export function calculateNewPrice(currentPrice, percentage, roundOption){
 export async function savePriceChanges(updatedProducts, userId) {
     const now = new Date().toISOString();
 
-    for(const product of updatedProducts){
-        //update price in products table
-        const {error: updateError} = await supabase 
-        .from("products")
-        .update({price: product.currentPrice, updated_at: now})
-        .eq("id", product.id);
+// 1. Update all changed products in parallel
+  const updatePromises = updatedProducts.map((product) =>
+    supabase
+      .from("products")
+      .update({ price: product.currentPrice, updated_at: now })
+      .eq("id", product.id)
+  );
 
-        if(updateError){
-          console.error("Unable to update product price: ", updateError);
-          throw updateError;
-        }
+  const results = await Promise.all(updatePromises);
+  const failed = results.find((r) => r.error);
+  if (failed) throw failed.error;
 
-        //record history in price_changes table if user is logged in
-        if(userId){
-          await supabase .from("price_changes").insert({
-            product_id: product.id,
-            old_price: product.oldPrice,
-            new_price: product.currentPrice,
-            changed_by: userId,
-            changed_at: now
-          });
-        }
-    }
+  // 2. Insert all history records in one single request
+  if (userId) {
+    const historyRows = updatedProducts.map((product) => ({
+      product_id: product.id,
+      old_price: product.oldPrice,
+      new_price: product.currentPrice,
+      changed_by: userId,
+      changed_at: now
+    }));
+
+    await supabase.from("price_changes").insert(historyRows);
+  }
 }
