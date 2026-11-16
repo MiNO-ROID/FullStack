@@ -1,10 +1,10 @@
-body{
+body {
     background-color: var(--ink);
     font-family: var(--font);
 }
 
 /* whole-box */
-.container{
+.container {
     display: flex;
     justify-self: center;
     align-items: center;
@@ -13,7 +13,7 @@ body{
 }
 
 /* form */
-.form{
+.form {
     background-color: var(--l-primary);
     border: 1px solid var(--soft);
     border-radius: 5px;
@@ -22,21 +22,21 @@ body{
     padding: 1em;
 }
 
-.heading{
+.heading {
     font-size: var(--step-lead);
     margin: 0 0rem;
     margin-bottom: 0.5rem;
     color: var(--l-surface);
 }
 
-.sub-heading{
+.sub-heading {
     font-size: var(--step-small);
     color: var(--l-ground);
     margin: 0 0rem;
     margin-bottom: 1rem;
 }
 
-.email{
+.email {
     border: 1px solid var(--l-muted);
     background-color: var(--soft);
     border-radius: 5px;
@@ -46,7 +46,7 @@ body{
     margin-top: 0.5em;
 }
 
-.password{
+.password {
     border: 1px solid var(--l-muted);
     border-radius: 5px;
     min-width: 300px;
@@ -57,19 +57,19 @@ body{
     margin-top: 0.5em;
 }
 
-input:focus{
+input:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
 }
 
-.hint{
+.hint {
     font-size: var(--step-small);
     color: var(--scrim);
     margin: 0.5em 0em;
     color: var(--l-ground);
 }
 
-.submit{
+.submit {
     border: 1px solid var(--l-muted);
     border-radius: 5px;
     min-width: 315px;
@@ -81,7 +81,7 @@ input:focus{
     color: var(--l-surface);
 }
 
-.link-heading{
+.link-heading {
     font-size: var(--step-small);
     color: var(--scrim);
     margin-top: 0.5em;
@@ -89,12 +89,12 @@ input:focus{
     color: var(--l-ground);
 }
 
-.header{
+.header {
     color: var(--l-ground);
 }
 
 /*  login message */
-#login-message{
+#login-message {
     font-size: var(--step-small);
     color: var(--scrim);
     margin: 0.5em 0em;
