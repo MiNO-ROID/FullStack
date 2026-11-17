@@ -1,10 +1,6 @@
 //import supabase client
 import { supabase } from "../config/supabaseClient.js";    
 
- 
-
-// console.log("++++ ", supabase);
-
 //global variables
 const form = document.getElementById('form');
 const emailInput = document.getElementById('email');
@@ -26,9 +22,6 @@ function displayMessage(text, type){
     message.style.display = text ? "block" : "none" ;
 }
 
-// const staffDashboard = './staffDashboard.html';
-// const ownerDashboard = './ownerDashboard.html';
-
 // checkSession -- function
  async function checkSession(){
 
@@ -41,8 +34,6 @@ function displayMessage(text, type){
 
     if(session){
         console.log("Email: ", session.user.email)
-        // window.location.href = "./dashboard.html";
-        // window.location.replace(staffDashboard.html);
     }else{
         console.log("User not logged in.");
     }
@@ -117,7 +108,7 @@ form.addEventListener('submit', async (event) => {
         else if(store.role === "staff"){
             displayMessage('Login successful, welcome', 'success');
             console.log('staff logged in');
-            // window.location.replace.staffDashboard();
+            window.location.replace("./team.html");
             return;
         }
 

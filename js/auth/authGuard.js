@@ -22,7 +22,7 @@ export async function checkUserRole(requiredRole) {
     const user = await checkUserAuthentication();
 
     if (!user) {
-        console.log("No auathenticated user found.");
+        console.log("Not an authenticated user.");
         return null;
     }
 
@@ -42,9 +42,7 @@ export async function checkUserRole(requiredRole) {
     const expectedRole = requiredRole.trim().toLowerCase();
 
     if (actualRole != expectedRole) {
-        console.error(
-            `Role mismtached: expected ${expectedRole}, recieved ${actualRole}`,
-        );
+        console.error(`Role mismtached: expected ${expectedRole}, recieved ${actualRole}`, error);
         return;
     }
 
