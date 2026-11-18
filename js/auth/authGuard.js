@@ -33,16 +33,19 @@ export async function checkUserRole(requiredRole) {
         .single();
 
     //check database error
-    if (error || !member) {
+    if (error || !member || !member.role) {
         console.error("Failed to retrieve role", error);
         return null;
     }
 
-    const actualRole = member.role?.trim().toLowerCase();
-    const expectedRole = requiredRole.trim().toLowerCase();
+    const allowedRole = member.role.trim().toLowerCase();
 
-    if (actualRole != expectedRole) {
-        console.error(`Role mismtached: expected ${expectedRole}, recieved ${actualRole}`, error);
+    const actualRole = Array.isArray(requiredRole)
+    ? requiredRole.map((r) => r.trim().toLowerCase())
+    : [requiredRole.trim().toLowerCase()];
+
+    if (!allowedRole.includes(actualRole)) {
+        console.error(`Role mismtached: expected ${expectedRole.join(" ")}, recieved ${actualRole}`);
         return;
     }
 

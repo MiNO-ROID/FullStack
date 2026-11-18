@@ -1,5 +1,5 @@
 // Import required modules
-import { checkUserAuthentication, signOut } from "../auth/authGuard.js";
+import { checkUserAuthentication, checkUserRole, signOut } from "../auth/authGuard.js";
 
 import {
   getCategories,
@@ -61,7 +61,9 @@ const applyDeptBtn = document.getElementById("apply-department-btn");
 async function InitializePriceDashboard() {
   try {
     //checked logged-in user -- also used while saving changes
-    currentUser = await checkUserAuthentication();
+    currentUser = await checkUserRole(["owner", "staff"]);
+
+    if(!currentUser) return;
 
     //load categories and populate dropdown
     allCategories = await getCategories();
@@ -352,14 +354,16 @@ saveBtn.addEventListener("click", async () => {
             product.oldPrice = product.currentPrice;
         });
 
+        saveBtn.textContent = "Saved";
+
         applyAllTogether();
         updateBulkPreview();
 
     }catch(error){
         console.error("Error saving prices: ", error);
     }finally{
-        // saveBtn.disabled = false;
-        saveBtn.textContent = "Saved";
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Save changes";
         refreshCounts();
     }
 

@@ -9,6 +9,7 @@ import {
 } from "../team/teamUI.js";
 
 // DOM elements
+const inviteSection = document.querySelectorAll(".invite-section");
 const inviteForm = document.getElementById("invite-form");
 const emailInput = document.getElementById("email");
 const roleInput = document.getElementById("role");
@@ -19,17 +20,23 @@ const logOutBtn = document.getElementById("logOut-btn");
 async function initializeTeamDashboard() {
   try {
     //check - user is owner
-    const user = await checkUserRole("owner");
+    const user = await checkUserRole(["owner", "staff"]);
 
     //if user isn't owner
     if (!user) {
-      // window.location.replace("./signIn.html");
+      window.location.replace("./signIn.html");
       return;
     }
 
-    console.log("Owner authenticated.", user.email);
+    //hide invite-form if the user is not the owner
+    if(user.role !== "owner" && inviteForm){
+      inviteSection.style.display = "none";
+    }
+
+    console.log("User authenticated.", user.email);
 
     await loadTeamMembers(user.id);
+
   } catch (error) {
     console.error("Dashboard initialization failed: ", error);
     // window.location.replace("./signIn.html");
@@ -46,9 +53,12 @@ async function loadTeamMembers(currentUserId) {
     displayTeamMembers(members, currentUserId);
 
     console.log("team members loaded successfully.");
+
   } catch (error) {
+
     console.error("Failed to load team members: ", error);
     displayMessage("Unable to load team members.", "error");
+
   }
 }
 

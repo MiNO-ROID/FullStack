@@ -123,16 +123,17 @@ export async function savePriceChanges(updatedProducts, userId) {
       .from("products")
       .update({ 
         price: product.currentPrice, 
-        updated_at: now 
+        updated_at: now, 
       })
       .eq("id", product.id)
+      .select("id")
   );
 
   const results = await Promise.all(updatePromises);
 
   const failed = results.filter((r) => r.error);
   if (failed.length > 0){
-    console.error("Some product updates failed: ", error);
+    console.error("Some product updates failed: ", failed[0].error);
     throw failed[0].error;
   }
 
