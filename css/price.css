@@ -102,7 +102,7 @@ body {
 /* main wrokspace -- main content */
 .main-content {
   margin-left: 4em;
-  width: calc(100% - 50px);
+  width: calc(100% - 4em);
   padding: 2em 2em;
 }
 
@@ -407,8 +407,9 @@ body {
   color: var(--l-text);
   border-color: var(--l-surface);
   font-size: clamp(0.7rem, 0.8rem + 0.1vw, 9rem);
-  min-width: 340px;
-  height: 30px;
+  width: 100%;
+  min-width: 0;
+   height: 30px;
   padding: 0 0.8em;
   margin-top: 1em;
   cursor: pointer;
@@ -658,3 +659,92 @@ body {
   color: var(--l-muted);
   padding: 2.5em 1em !important;
 }
+
+/* Addidtional added for mobile view */
+
+@media (max-width: 960px) {
+  .content-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .content-layout > * {
+    min-width: 0;
+  }
+
+  .department-card {
+    position: static;
+    width: 100%;
+  }
+}
+  /* Stack header title and Discard / Save buttons */
+  .page-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .header-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  /* Allow filter tabs to wrap cleanly */
+  .tabs-bar {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1.25em;
+  }
+
+  .filter-tabs {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Stack search bar, department dropdown, and count */
+  .table-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .toolbar-controls {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .search-box,
+  .select-control {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Make the Change a department inputs fit side-by-side without overflowing */
+  .form-row {
+    gap: 12px;
+  }
+
+  .form-row > * {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .input-control {
+    width: 100%;
+  }
+
+  /* Keep the products table readable with smooth horizontal scrolling */
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .products-table {
+    min-width: 560px;
+  }
+
+  /* Stack pagination info and buttons if needed */
+  .Pagination-bar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
