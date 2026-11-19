@@ -51,7 +51,7 @@ svg {
 .email{
     border: 1px solid var(--l-border);
     background-color: var(--l-surface);
-    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+    box-shadow: 0 0 5px var(--l-border);
     border-radius: 5px;
     min-width: 300px;
     padding: 0.5em;
@@ -63,16 +63,24 @@ svg {
     border: 1px solid var(--l-border);
     border-radius: 5px;
     min-width: 300px;
-    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+    box-shadow: 0 0 5px var(--l-border);
     background-color: var(--l-surface);
     padding: 0.5em;
     margin-bottom: 0.8em;
     margin-top: 0.5em;
 }
 
-input:focus {
+/* input:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+} */
+
+/* Border -- hover */
+input:focus,
+.submit:focus{
+    outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px rgba(201, 162, 69, 0.25);
 }
 
 .hint {
@@ -108,8 +116,8 @@ input:focus {
 /*  login message */
 #login-message {
     font-size: var(--step-small);
-    color: var(--scrim);
-    margin: 0.5em 0em;
+    color: var(--l-text);
+    margin: 0.3em 0em;
     text-align: center;
     color: var(--l-ground);
 }

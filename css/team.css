@@ -129,7 +129,7 @@ svg {
 
 .section-card h2 {
   font-size: var(--step-body);
-  margin-bottom: 0.8em;
+  margin-bottom: 0.7em;
   margin-top: 0;
   color: var(--l-text);
 }
@@ -217,7 +217,7 @@ svg {
   /* width: 100%; */
   height: 35px;
   background-color: var(--l-surface);
-  border: 1px solid #a54d4d;
+  border: 1px solid var(--l-border);
   border-radius: 6px;
   padding: 0 12px;
   color: #f1f1f1;
@@ -230,18 +230,13 @@ svg {
   color: var(--soft);
 }
 
-.form-group input {
-  border-color: #3b82f6;
-}
-
 /* ROLE DROPDOWN */
-
 .form-group select {
   width: 100%;
   height: 37px;
 
   background-color: var(--l-surface);
-  border: 1px solid #d6a72c;
+  border: 1px solid var(--l-border);
   border-radius: 6px;
 
   padding: 0 12px;
@@ -253,17 +248,21 @@ svg {
   cursor: pointer;
 }
 
-.form-group select {
-  border-color: #3b82f6;
-}
-
-.form-group select option {
+.form-group select .option {
   background-color: var(--l-surface);
+  border: 1px solid var(--l-border);
+  border-radius: 5px;
   color: var(--l-text);
 }
 
-/* INVITATION DESCRIPTION */
+/* Border -- hover */
+.form-group input:focus,
+.form-group select:focus{
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px rgba(201, 162, 69, 0.25);
+}
 
+/* INVITATION DESCRIPTION */
 .invite-description {
   padding: 0 14px 0;
   border: 1px solid var(--l-border);
@@ -327,7 +326,6 @@ svg {
 }
 
 /* RESPONSIVE DESIGN */
-
 @media screen and (max-width: 850px) {
   .team-layout {
     grid-template-columns: 1fr;
