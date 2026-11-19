@@ -17,7 +17,7 @@ export async function checkUserAuthentication() {
 }
 
 //checkUserRole
-export async function checkUserRole(requiredRole) {
+export async function checkUserRole(requiredRoles) {
     //check authentication first
     const user = await checkUserAuthentication();
 
@@ -30,7 +30,20 @@ export async function checkUserRole(requiredRole) {
         .from("staff")
         .select("role")
         .eq("id", user.id)
-        .single();
+        .maybeSingle();
+
+    // 2. Fallback: check by email if ID didn't match
+    if (!member && user.email) {
+        const { data: memberByEmail } = await supabase
+        .from("staff")
+        .select("id, email, role")
+        .ilike("email", user.email.trim())
+        .maybeSingle();
+        
+        if (memberByEmail) {
+            member = memberByEmail;
+        }
+    }
 
     //check database error
     if (error || !member || !member.role) {
@@ -38,19 +51,19 @@ export async function checkUserRole(requiredRole) {
         return null;
     }
 
-    const allowedRole = member.role.trim().toLowerCase();
+    const actualRole = String(member.role).trim().toLowerCase();
 
-    const actualRole = Array.isArray(requiredRole)
-    ? requiredRole.map((r) => r.trim().toLowerCase())
-    : [requiredRole.trim().toLowerCase()];
+    // Always convert requiredRoles into an array so .includes() and .join() never crash
+    const allowedRoles = (Array.isArray(requiredRoles) ? requiredRoles : [requiredRoles])
+    .map((role) => String(role).trim().toLowerCase());
 
-    if (!allowedRole.includes(actualRole)) {
-        console.error(`Role mismtached: expected ${expectedRole.join(" ")}, recieved ${actualRole}`);
-        return;
+    if (!allowedRoles.includes(actualRole)) {
+        console.error(`Role mismatched: expected ${allowedRoles.join(" or ")}, recieved ${actualRole}`);
+        return null;
     }
 
     console.log("Role successfully verified:", actualRole);
-
+    user.role = actualRole;
     return user;
 }
 

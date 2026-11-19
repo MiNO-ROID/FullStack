@@ -1,5 +1,5 @@
 // Import required modules
-import { checkUserAuthentication, checkUserRole, signOut } from "../auth/authGuard.js";
+import { checkUserRole, signOut } from "../auth/authGuard.js";
 
 import {
   getCategories,

@@ -13,7 +13,13 @@ message.id = "login-message";
 message.setAttribute("role","alert");
 
 // form.appendChild()
-form.insertBefore(message, submit);
+// form.insertBefore(message, submit);
+
+if (submit && submit.parentNode) {
+    submit.parentNode.insertBefore(message, submit);
+} else if (form) {
+    form.appendChild(message);
+}
 
 //function to display login messages
 function displayMessage(text, type){
@@ -44,6 +50,30 @@ function displayMessage(text, type){
 //initialized the checkSession function
 checkSession();
 
+// Track if invited staff member clicked the invite link in their email
+// let isInviteSession =
+//     window.location.hash.includes("type=invite") ||
+//     window.location.hash.includes("type=recovery");
+
+// supabase.auth.onAuthStateChange((event, session) => {
+//     console.log("Authentication event:", event);
+//     if (
+//         event === "INVITE_ACCEPTED" ||
+//         event === "PASSWORD_RECOVERY" ||
+//         (isInviteSession && session?.user)
+//     ) {
+//         isInviteSession = true;
+//         if (emailInput && session?.user?.email) {
+//             emailInput.value = session.user.email;
+//             emailInput.readOnly = true;
+//         }
+//         if (submit) {
+//             submit.textContent = "Set password & Sign in";
+//         }
+//         displayMessage("Welcome! Enter a new password to activate your staff account.", "success");
+//     }
+// });
+
 //handle signin form submission
 form.addEventListener('submit', async (event) => {
     
@@ -56,14 +86,16 @@ form.addEventListener('submit', async (event) => {
 
     if(!email || !password){
         displayMessage("Please, enter both email and password. Thanks", "error");
-        console.error('Please, enter valid email and password', error);
+        console.error('Invalid email and password', error);
         return;
     }
     
     try{
         //submit button disabled during processing
         submit.disabled = true;
-        displayMessage("", "");
+        displayMessage("Signing in...", "loading");
+
+        let user = null;
 
         const{error, data} = await supabase.auth.signInWithPassword({
             email: email,
@@ -72,12 +104,13 @@ form.addEventListener('submit', async (event) => {
 
         if(error){
             console.error("Login failed: ", error.message);
+            displayMessage(error.message, "error");
             return;
         }
 
-        const user = data.user;
+        user = data.user;
 
-        //check user authorization
+        //check user role
         const {data: store, error: storeError} = await supabase
         .from("staff")
         .select("id, role")  // is_active
@@ -93,9 +126,11 @@ form.addEventListener('submit', async (event) => {
         if(!store){
             await supabase.auth.signOut();
             displayMessage("Access denied, your account is not registered.", "error");
-            console.log("access denied");
+            console.error("User ID not found in public.staff table:", user.id, user.email);            
             return;
         }
+
+        const role = store.role?.trim().toLowerCase();
 
         //check user role
         if(store.role === "owner"){
@@ -114,7 +149,7 @@ form.addEventListener('submit', async (event) => {
 
         else{
             await supabase.auth.signOut();
-            displayMessage('Access denied, Invalid account permission', 'error');
+            displayMessage('Access denied: Invalid account permission.', 'error');
             console.log("invalid account permission.");
         }
 

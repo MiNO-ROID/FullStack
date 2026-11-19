@@ -9,33 +9,34 @@ import {
 } from "../team/teamUI.js";
 
 // DOM elements
-const inviteSection = document.querySelectorAll(".invite-section");
+const inviteSection = document.querySelector(".invite-section");
 const inviteForm = document.getElementById("invite-form");
 const emailInput = document.getElementById("email");
 const roleInput = document.getElementById("role");
-
 const logOutBtn = document.getElementById("logOut-btn");
+
+let currentUser = null;
 
 //team-dashboard
 async function initializeTeamDashboard() {
   try {
     //check - user is owner
-    const user = await checkUserRole(["owner", "staff"]);
+    currentUser = await checkUserRole(["owner", "staff"]);
 
     //if user isn't owner
-    if (!user) {
+    if (!currentUser) {
       window.location.replace("./signIn.html");
       return;
     }
 
-    //hide invite-form if the user is not the owner
-    if(user.role !== "owner" && inviteForm){
+    console.log("Team page authenticated:", currentUser.email, "Role:", currentUser.role);
+
+    //hide invite-form if the logged-in user is staff
+    if(currentUser.role !== "owner" && inviteSection){
       inviteSection.style.display = "none";
     }
 
-    console.log("User authenticated.", user.email);
-
-    await loadTeamMembers(user.id);
+    await loadTeamMembers(currentUser.id);
 
   } catch (error) {
     console.error("Dashboard initialization failed: ", error);
@@ -80,9 +81,14 @@ function validateEmail(email) {
 }
 
 //send invitation
-inviteForm.addEventListener("submit", async (event) => {
+inviteForm?.addEventListener("submit", async (event) => {
   //prevent from default form submission
   event.preventDefault();
+
+  if(currentUser?.role !== "owner"){
+    displayMessage("Only owner can invite staff members.");
+    return;
+  }
 
   //get form values
   const email = String(emailInput.value || "").trim().toLowerCase();
@@ -97,8 +103,7 @@ inviteForm.addEventListener("submit", async (event) => {
 
   //check validate roles
   if (!["staff", "owner"].includes(role)) {
-    console.log("Invalid role selected.");
-    displayMessage("Please, select role valid role", "error");
+    displayMessage("Please, select a valid role", "error");
     return;
   }
 
@@ -106,7 +111,7 @@ inviteForm.addEventListener("submit", async (event) => {
     //show loading state
     setInviteLoading(true);
 
-    displayMessage("Sending invitation ...", "loading");
+    displayMessage("Sending invitation...", "loading");
 
     //send invitation through teamService
     const result = await inviteTeamMembers(email, role);
@@ -117,7 +122,11 @@ inviteForm.addEventListener("submit", async (event) => {
     //clear invitation form - refresh
     clearInviteForm();
 
+    // Load team members
+    await loadTeamMembers(currentUser.id);
+
     console.log("Invitation response.", result);
+
   } catch (error) {
     console.error("Invitation failed:", error);
     displayMessage(error.message || "Failed to send invitation.", "error");
@@ -134,13 +143,12 @@ logOutBtn?.addEventListener("click", async (event) => {
 
   try{
     console.log("Signing out...");
-    let result = await signOut();
+    await signOut();
     //redirect to sign-in page after session is cleared.
     window.location.replace("./signIn.html");
   }catch(error){
     console.error("Failed to sign out: ", error);
-    //fallback redirect even if the network fails
-    // window.location.replace("./signIn.html")
+    window.location.replace("./signIn.html")
   }
 });
 
